@@ -13,6 +13,7 @@
   --text: #333;
   --text-light: #666;
   --card-shadow: 0 8px 32px rgba(0,0,0,0.08);
+  --sidebar-width: 240px;
 }
 
 * { margin: 0; padding: 0; box-sizing: border-box; }
@@ -24,9 +25,9 @@ body {
   line-height: 1.6;
 }
 
-/* Hero */
+/* Hero - 缩小为顶部横幅 */
 .hero {
-  min-height: 100vh;
+  padding: 60px 20px;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -34,7 +35,6 @@ body {
   background: linear-gradient(135deg, #2C3E50 0%, #3498DB 50%, #1ABC9C 100%);
   position: relative;
   overflow: hidden;
-  padding: 40px 20px;
 }
 
 .hero::before {
@@ -46,12 +46,6 @@ body {
   height: 200%;
   background: radial-gradient(circle at 30% 50%, rgba(255,255,255,0.05) 0%, transparent 50%),
               radial-gradient(circle at 70% 80%, rgba(255,255,255,0.03) 0%, transparent 40%);
-  animation: float 20s ease-in-out infinite;
-}
-
-@keyframes float {
-  0%, 100% { transform: translate(0, 0) rotate(0deg); }
-  50% { transform: translate(-20px, -20px) rotate(2deg); }
 }
 
 .hero-content {
@@ -61,83 +55,121 @@ body {
 }
 
 .hero-avatar {
-  width: 120px;
-  height: 120px;
+  width: 80px;
+  height: 80px;
   border-radius: 50%;
   background: linear-gradient(135deg, var(--accent), #F39C12);
   display: flex;
   align-items: center;
   justify-content: center;
-  margin: 0 auto 32px;
-  font-size: 48px;
+  margin: 0 auto 20px;
+  font-size: 36px;
   box-shadow: 0 8px 32px rgba(0,0,0,0.2);
 }
 
 .hero-name {
   font-family: 'Noto Serif SC', serif;
-  font-size: 48px;
+  font-size: 36px;
   font-weight: 900;
   color: #fff;
-  margin-bottom: 16px;
+  margin-bottom: 10px;
   letter-spacing: 4px;
 }
 
 .hero-tagline {
-  font-size: 18px;
+  font-size: 15px;
   color: rgba(255,255,255,0.8);
   font-weight: 300;
-  margin-bottom: 40px;
   letter-spacing: 2px;
 }
 
-.hero-nav {
+/* 主体布局：左右分栏 */
+.main-layout {
   display: flex;
-  gap: 16px;
-  flex-wrap: wrap;
-  justify-content: center;
+  max-width: 1200px;
+  margin: 0 auto;
+  min-height: calc(100vh - 200px);
 }
 
-.hero-nav a {
-  padding: 12px 28px;
-  border: 1.5px solid rgba(255,255,255,0.4);
-  border-radius: 30px;
-  color: #fff;
+/* 左侧边栏 */
+.sidebar {
+  width: var(--sidebar-width);
+  padding: 40px 0;
+  border-right: 1px solid #e8e4df;
+  position: sticky;
+  top: 0;
+  height: fit-content;
+  align-self: flex-start;
+}
+
+.sidebar-nav {
+  list-style: none;
+}
+
+.sidebar-item {
+  margin-bottom: 4px;
+}
+
+.sidebar-link {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 14px 24px;
   text-decoration: none;
+  color: var(--text-light);
   font-size: 15px;
   font-weight: 400;
-  transition: all 0.3s ease;
-  backdrop-filter: blur(4px);
-  background: rgba(255,255,255,0.05);
+  border-radius: 0 24px 24px 0;
+  transition: all 0.2s ease;
+  cursor: pointer;
 }
 
-.hero-nav a:hover {
-  background: rgba(255,255,255,0.2);
-  border-color: rgba(255,255,255,0.8);
-  transform: translateY(-2px);
+.sidebar-link:hover {
+  background: rgba(44, 62, 80, 0.05);
+  color: var(--primary);
 }
 
-/* Sections */
-.section {
-  max-width: 1100px;
-  margin: 0 auto;
-  padding: 80px 24px;
+.sidebar-link.active {
+  background: linear-gradient(135deg, rgba(44,62,80,0.08), rgba(52,152,219,0.08));
+  color: var(--primary);
+  font-weight: 500;
 }
 
-.section-header {
+.sidebar-icon {
+  font-size: 20px;
+  width: 28px;
   text-align: center;
-  margin-bottom: 48px;
 }
 
-.section-title {
+/* 右侧内容区 */
+.content-area {
+  flex: 1;
+  padding: 40px 48px;
+  min-width: 0;
+}
+
+.content-section {
+  display: none;
+}
+
+.content-section.active {
+  display: block;
+}
+
+.content-header {
+  margin-bottom: 32px;
+}
+
+.content-title {
   font-family: 'Noto Serif SC', serif;
-  font-size: 32px;
+  font-size: 28px;
   font-weight: 700;
   color: var(--primary);
-  margin-bottom: 12px;
+  margin-bottom: 8px;
 }
 
-.section-subtitle {
-  font-size: 15px;
+.content-subtitle {
+  font-size: 14px;
   color: var(--text-light);
   font-weight: 300;
 }
@@ -145,13 +177,13 @@ body {
 /* Cards Grid */
 .cards-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
-  gap: 28px;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 24px;
 }
 
 .card {
   background: #fff;
-  border-radius: 16px;
+  border-radius: 12px;
   overflow: hidden;
   box-shadow: var(--card-shadow);
   transition: all 0.3s ease;
@@ -161,19 +193,17 @@ body {
 }
 
 .card:hover {
-  transform: translateY(-6px);
+  transform: translateY(-4px);
   box-shadow: 0 16px 48px rgba(0,0,0,0.12);
 }
 
 .card-cover {
   width: 100%;
-  height: 200px;
-  object-fit: cover;
+  height: 160px;
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 64px;
-  background: linear-gradient(135deg, #f5f5f5, #e0e0e0);
+  font-size: 56px;
 }
 
 .card-cover.travel { background: linear-gradient(135deg, #F39C12, #E74C3C); }
@@ -181,138 +211,188 @@ body {
 .card-cover.reading { background: linear-gradient(135deg, #1ABC9C, #2ECC71); }
 
 .card-body {
-  padding: 24px;
+  padding: 20px;
 }
 
 .card-tag {
   display: inline-block;
-  font-size: 12px;
+  font-size: 11px;
   color: var(--accent);
   font-weight: 500;
-  margin-bottom: 8px;
+  margin-bottom: 6px;
   text-transform: uppercase;
   letter-spacing: 1px;
 }
 
 .card-title {
-  font-size: 18px;
+  font-size: 16px;
   font-weight: 700;
-  margin-bottom: 8px;
+  margin-bottom: 6px;
   line-height: 1.4;
 }
 
 .card-desc {
-  font-size: 14px;
+  font-size: 13px;
   color: var(--text-light);
   line-height: 1.6;
 }
 
 .card-meta {
-  margin-top: 16px;
+  margin-top: 12px;
   font-size: 12px;
   color: #999;
   display: flex;
-  gap: 16px;
+  gap: 14px;
 }
 
 /* Coming Soon */
 .coming-soon {
   text-align: center;
-  padding: 60px 20px;
+  padding: 80px 20px;
   color: var(--text-light);
   font-size: 15px;
 }
 
 .coming-soon-icon {
-  font-size: 48px;
+  font-size: 56px;
   margin-bottom: 16px;
+  opacity: 0.6;
 }
 
 /* Footer */
 .footer {
   text-align: center;
-  padding: 40px 20px;
+  padding: 32px 20px;
   color: #999;
-  font-size: 13px;
+  font-size: 12px;
   border-top: 1px solid #eee;
 }
 
 /* Responsive */
 @media (max-width: 768px) {
-  .hero-name { font-size: 32px; }
-  .hero-tagline { font-size: 15px; }
-  .section { padding: 60px 16px; }
-  .section-title { font-size: 26px; }
+  .main-layout { flex-direction: column; }
+  .sidebar {
+    width: 100%;
+    position: static;
+    border-right: none;
+    border-bottom: 1px solid #e8e4df;
+    padding: 16px 0;
+  }
+  .sidebar-nav { display: flex; justify-content: center; gap: 4px; }
+  .sidebar-link { padding: 10px 16px; border-radius: 20px; font-size: 14px; }
+  .sidebar-icon { font-size: 16px; width: auto; }
+  .content-area { padding: 24px 16px; }
+  .hero-name { font-size: 28px; }
   .cards-grid { grid-template-columns: 1fr; }
 }
 </style>
 </head>
 <body>
 
-<!-- Hero -->
-<section class="hero">
+<!-- Hero 顶部横幅 -->
+<header class="hero">
   <div class="hero-content">
     <div class="hero-avatar">🌍</div>
     <h1 class="hero-name">VeraTraces</h1>
     <p class="hero-tagline">用脚步丈量世界，用镜头记录生活，用文字沉淀思考</p>
-    <nav class="hero-nav">
-      <a href="#travel">旅行攻略</a>
-      <a href="#photography">摄影作品</a>
-      <a href="#reading">读书笔记</a>
-    </nav>
   </div>
-</section>
+</header>
 
-<!-- 旅行攻略 -->
-<section class="section" id="travel">
-  <div class="section-header">
-    <h2 class="section-title">旅行攻略</h2>
-    <p class="section-subtitle">走过的路，都是风景</p>
-  </div>
-  <div class="cards-grid">
-    <a class="card" href="./travel/kenya.html">
-      <div class="card-cover travel">🦁</div>
-      <div class="card-body">
-        <span class="card-tag">非洲 · Safari</span>
-        <h3 class="card-title">肯尼亚Safari保姆级攻略</h3>
-        <p class="card-desc">端午节9天7晚，追逐非洲五霸的梦想之旅。内罗毕→安博塞利→奈瓦沙湖→纳库鲁湖→马赛马拉，人均2.4w。</p>
-        <div class="card-meta">
-          <span>🗓 2026年端午</span>
-          <span>📍 肯尼亚</span>
-        </div>
+<!-- 主体：左右分栏 -->
+<div class="main-layout">
+  <!-- 左侧分类导航 -->
+  <aside class="sidebar">
+    <ul class="sidebar-nav">
+      <li class="sidebar-item">
+        <a class="sidebar-link active" data-tab="travel">
+          <span class="sidebar-icon">✈️</span>
+          <span>旅行攻略</span>
+        </a>
+      </li>
+      <li class="sidebar-item">
+        <a class="sidebar-link" data-tab="photography">
+          <span class="sidebar-icon">📷</span>
+          <span>摄影作品</span>
+        </a>
+      </li>
+      <li class="sidebar-item">
+        <a class="sidebar-link" data-tab="reading">
+          <span class="sidebar-icon">📚</span>
+          <span>读书笔记</span>
+        </a>
+      </li>
+    </ul>
+  </aside>
+
+  <!-- 右侧内容区 -->
+  <main class="content-area">
+    <!-- 旅行攻略 -->
+    <div class="content-section active" id="travel">
+      <div class="content-header">
+        <h2 class="content-title">旅行攻略</h2>
+        <p class="content-subtitle">走过的路，都是风景</p>
       </div>
-    </a>
-  </div>
-</section>
+      <div class="cards-grid">
+        <a class="card" href="./travel/kenya.html">
+          <div class="card-cover travel">🦁</div>
+          <div class="card-body">
+            <span class="card-tag">非洲 · Safari</span>
+            <h3 class="card-title">肯尼亚Safari保姆级攻略</h3>
+            <p class="card-desc">端午节9天7晚，追逐非洲五霸的梦想之旅。内罗毕→安博塞利→奈瓦沙湖→纳库鲁湖→马赛马拉，人均2.4w。</p>
+            <div class="card-meta">
+              <span>🗓 2026年端午</span>
+              <span>📍 肯尼亚</span>
+            </div>
+          </div>
+        </a>
+      </div>
+    </div>
 
-<!-- 摄影作品 -->
-<section class="section" id="photography">
-  <div class="section-header">
-    <h2 class="section-title">摄影作品</h2>
-    <p class="section-subtitle">每一次按下快门，都是与美好的对话</p>
-  </div>
-  <div class="coming-soon">
-    <div class="coming-soon-icon">📷</div>
-    <p>作品整理中，敬请期待...</p>
-  </div>
-</section>
+    <!-- 摄影作品 -->
+    <div class="content-section" id="photography">
+      <div class="content-header">
+        <h2 class="content-title">摄影作品</h2>
+        <p class="content-subtitle">每一次按下快门，都是与美好的对话</p>
+      </div>
+      <div class="coming-soon">
+        <div class="coming-soon-icon">📷</div>
+        <p>作品整理中，敬请期待...</p>
+      </div>
+    </div>
 
-<!-- 读书笔记 -->
-<section class="section" id="reading">
-  <div class="section-header">
-    <h2 class="section-title">读书笔记</h2>
-    <p class="section-subtitle">在文字中寻找另一种旅行</p>
-  </div>
-  <div class="coming-soon">
-    <div class="coming-soon-icon">📚</div>
-    <p>笔记整理中，敬请期待...</p>
-  </div>
-</section>
+    <!-- 读书笔记 -->
+    <div class="content-section" id="reading">
+      <div class="content-header">
+        <h2 class="content-title">读书笔记</h2>
+        <p class="content-subtitle">在文字中寻找另一种旅行</p>
+      </div>
+      <div class="coming-soon">
+        <div class="coming-soon-icon">📚</div>
+        <p>笔记整理中，敬请期待...</p>
+      </div>
+    </div>
+  </main>
+</div>
 
 <!-- Footer -->
 <footer class="footer">
   <p>© 2026 VeraTraces · 旅行 · 摄影 · 阅读</p>
 </footer>
+
+<script>
+// 左侧导航切换
+document.querySelectorAll('.sidebar-link').forEach(link => {
+  link.addEventListener('click', function() {
+    // 移除所有 active
+    document.querySelectorAll('.sidebar-link').forEach(l => l.classList.remove('active'));
+    document.querySelectorAll('.content-section').forEach(s => s.classList.remove('active'));
+    // 激活当前
+    this.classList.add('active');
+    const tab = this.getAttribute('data-tab');
+    document.getElementById(tab).classList.add('active');
+  });
+});
+</script>
 
 </body>
 </html>
