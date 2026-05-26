@@ -3,1008 +3,316 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>肯尼亚Safari攻略 - 小红书长图文</title>
+<title>VeraTraces - 旅行 · 摄影 · 阅读</title>
 <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;700;900&family=Noto+Sans+SC:wght@300;400;500;700&display=swap" rel="stylesheet">
 <style>
 :root {
-  --safari-gold: #D4A853;
-  --safari-orange: #E8834A;
-  --safari-brown: #5C3D2E;
-  --safari-cream: #FFF8F0;
-  --safari-green: #4A7C59;
-  --safari-sunset: #F4845F;
-  --safari-earth: #8B6914;
-  --card-shadow: 0 4px 20px rgba(92, 61, 46, 0.12);
-  --text-dark: #2D1B0E;
-  --text-body: #4A3728;
-  --text-muted: #8B7355;
+  --primary: #2C3E50;
+  --accent: #E67E22;
+  --light: #F8F5F0;
+  --text: #333;
+  --text-light: #666;
+  --card-shadow: 0 8px 32px rgba(0,0,0,0.08);
 }
+
 * { margin: 0; padding: 0; box-sizing: border-box; }
+
 body {
-  background: #f5f0eb;
-  display: flex;
-  justify-content: center;
-  padding: 20px;
-  font-family: 'Noto Sans SC', sans-serif;
+  font-family: 'Noto Sans SC', -apple-system, sans-serif;
+  background: var(--light);
+  color: var(--text);
+  line-height: 1.6;
 }
-.page-container {
-  width: 750px;
+
+/* Hero */
+.hero {
+  min-height: 100vh;
   display: flex;
   flex-direction: column;
-  gap: 12px;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(135deg, #2C3E50 0%, #3498DB 50%, #1ABC9C 100%);
+  position: relative;
+  overflow: hidden;
+  padding: 40px 20px;
 }
 
-/* 封面 */
-.cover-card {
-  width: 750px; height: 1000px;
-  background-image: url('./cover-bg-fixed.png');
-  background-size: 750px auto;
-  background-repeat: no-repeat;
-  background-position: center top;
-  border-radius: 12px; position: relative; overflow: hidden;
-  display: flex; flex-direction: column; align-items: center; justify-content: flex-end;
-  padding-bottom: 80px;
+.hero::before {
+  content: '';
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: radial-gradient(circle at 30% 50%, rgba(255,255,255,0.05) 0%, transparent 50%),
+              radial-gradient(circle at 70% 80%, rgba(255,255,255,0.03) 0%, transparent 40%);
+  animation: float 20s ease-in-out infinite;
 }
-.cover-card::before {
-  content: ''; position: absolute; bottom: 0; left: 0; right: 0; height: 450px;
-  background: linear-gradient(to top, rgba(10,5,0,0.85), rgba(10,5,0,0.4) 60%, transparent);
+
+@keyframes float {
+  0%, 100% { transform: translate(0, 0) rotate(0deg); }
+  50% { transform: translate(-20px, -20px) rotate(2deg); }
 }
-.cover-card::after {
-  content: ''; position: absolute; top: 0; left: 0; right: 0; height: 100px;
-  background: linear-gradient(to bottom, rgba(0,0,0,0.25), transparent);
+
+.hero-content {
+  position: relative;
+  z-index: 1;
+  text-align: center;
 }
-.cover-top-title {
-  position: absolute; top: 24px; left: 0; right: 0; z-index: 3;
-  text-align: center; font-family: 'Noto Serif SC', serif;
-  font-size: 44px; font-weight: 900; color: #FDCE3C; line-height: 1.3;
-  text-shadow: 2px 2px 3px rgba(80,40,0,0.7), 0 0 6px rgba(100,50,0,0.4);
+
+.hero-avatar {
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, var(--accent), #F39C12);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto 32px;
+  font-size: 48px;
+  box-shadow: 0 8px 32px rgba(0,0,0,0.2);
+}
+
+.hero-name {
+  font-family: 'Noto Serif SC', serif;
+  font-size: 48px;
+  font-weight: 900;
+  color: #fff;
+  margin-bottom: 16px;
   letter-spacing: 4px;
 }
-.cover-emoji { font-size: 72px; margin-bottom: 24px; position: relative; z-index: 2; }
-.cover-title {
-  font-family: 'Noto Serif SC', serif; font-size: 60px; font-weight: 900;
-  color: #fff; text-align: center; line-height: 1.3;
-  position: relative; z-index: 2; text-shadow: 0 4px 20px rgba(0,0,0,0.3); letter-spacing: 4px;
-}
-.cover-subtitle {
-  font-size: 22px; color: rgba(255,255,255,0.9); margin-top: 16px;
-  position: relative; z-index: 2; font-weight: 300; letter-spacing: 2px;
-}
-.cover-tags {
-  display: flex; gap: 12px; margin-top: 28px; position: relative; z-index: 2;
-  flex-wrap: wrap; justify-content: center; padding: 0 40px;
-}
-.cover-tag {
-  background: rgba(255,255,255,0.2); backdrop-filter: blur(10px);
-  border: 1px solid rgba(255,255,255,0.3); color: #fff;
-  padding: 8px 18px; border-radius: 20px; font-size: 14px; font-weight: 500;
-}
-.cover-info {
-  position: absolute; bottom: 40px; left: 0; right: 0; text-align: center;
-  color: rgba(255,255,255,0.8); font-size: 15px; z-index: 2; letter-spacing: 1px;
+
+.hero-tagline {
+  font-size: 18px;
+  color: rgba(255,255,255,0.8);
+  font-weight: 300;
+  margin-bottom: 40px;
+  letter-spacing: 2px;
 }
 
-/* 内容卡片通用 */
-.content-card {
-  width: 750px; background: var(--safari-cream);
-  border-radius: 12px; padding: 60px 50px; position: relative; overflow: hidden;
+.hero-nav {
+  display: flex;
+  gap: 16px;
+  flex-wrap: wrap;
+  justify-content: center;
 }
-.content-card::before {
-  content: ''; position: absolute; top: 0; left: 0; right: 0; height: 5px;
-  background: linear-gradient(90deg, var(--safari-gold), var(--safari-orange), var(--safari-sunset));
+
+.hero-nav a {
+  padding: 12px 28px;
+  border: 1.5px solid rgba(255,255,255,0.4);
+  border-radius: 30px;
+  color: #fff;
+  text-decoration: none;
+  font-size: 15px;
+  font-weight: 400;
+  transition: all 0.3s ease;
+  backdrop-filter: blur(4px);
+  background: rgba(255,255,255,0.05);
 }
-.card-number {
-  position: absolute; top: 25px; right: 40px;
-  font-family: 'Noto Serif SC', serif; font-size: 90px; font-weight: 900;
-  color: rgba(212, 168, 83, 0.08); line-height: 1;
+
+.hero-nav a:hover {
+  background: rgba(255,255,255,0.2);
+  border-color: rgba(255,255,255,0.8);
+  transform: translateY(-2px);
 }
-.section-header { display: flex; align-items: center; gap: 12px; margin-bottom: 28px; }
-.section-icon { font-size: 32px; }
+
+/* Sections */
+.section {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 80px 24px;
+}
+
+.section-header {
+  text-align: center;
+  margin-bottom: 48px;
+}
+
 .section-title {
-  font-family: 'Noto Serif SC', serif; font-size: 30px; font-weight: 700;
-  color: var(--text-dark); letter-spacing: 2px;
+  font-family: 'Noto Serif SC', serif;
+  font-size: 32px;
+  font-weight: 700;
+  color: var(--primary);
+  margin-bottom: 12px;
 }
-.section-subtitle { font-size: 13px; color: var(--text-muted); margin-top: 2px; letter-spacing: 1px; }
 
-/* 信息项 */
-.info-grid { display: flex; flex-direction: column; gap: 14px; }
-.info-item {
-  background: #fff; border-radius: 14px; padding: 22px 26px;
-  box-shadow: var(--card-shadow); border-left: 4px solid var(--safari-gold);
+.section-subtitle {
+  font-size: 15px;
+  color: var(--text-light);
+  font-weight: 300;
 }
-.info-label {
-  font-size: 12px; color: var(--text-muted); font-weight: 500;
-  text-transform: uppercase; letter-spacing: 2px; margin-bottom: 6px;
-}
-.info-value { font-size: 15px; color: var(--text-dark); font-weight: 500; line-height: 1.8; }
-.info-value .hl { color: var(--safari-orange); font-weight: 700; }
-.info-value .sm { font-size: 13px; color: var(--text-muted); }
 
-/* 费用 */
-.cost-total {
-  text-align: center; padding: 28px; background: linear-gradient(135deg, #fff9f0, #fff3e6);
-  border-radius: 18px; margin-bottom: 20px; border: 2px solid var(--safari-gold);
+/* Cards Grid */
+.cards-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+  gap: 28px;
 }
-.cost-total-label { font-size: 14px; color: var(--text-muted); margin-bottom: 6px; }
-.cost-total-value {
-  font-family: 'Noto Serif SC', serif; font-size: 44px; font-weight: 900; color: var(--safari-orange);
-}
-.cost-total-value .unit { font-size: 18px; font-weight: 400; }
-.cost-breakdown { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
-.cost-item {
-  background: #fff; border-radius: 12px; padding: 16px; box-shadow: var(--card-shadow); text-align: center;
-}
-.cost-item-icon { font-size: 26px; margin-bottom: 6px; }
-.cost-item-label { font-size: 11px; color: var(--text-muted); margin-bottom: 4px; }
-.cost-item-value { font-size: 16px; font-weight: 700; color: var(--text-dark); }
-.money-box {
-  background: linear-gradient(135deg, #FFF9E6, #FFF3CC);
-  border: 2px solid var(--safari-gold); border-radius: 14px; padding: 22px; margin-top: 20px;
-}
-.money-box b { color: var(--safari-orange); }
-.money-title { font-size: 15px; font-weight: 700; color: var(--safari-earth); margin-bottom: 10px; }
-.money-list { font-size: 13px; color: var(--text-body); line-height: 2.2; }
 
-/* 路线 */
-.route-flow {
-  display: flex; flex-wrap: wrap; align-items: center; gap: 8px;
-  margin: 16px 0 24px; padding: 22px; background: #fff; border-radius: 14px; box-shadow: var(--card-shadow);
+.card {
+  background: #fff;
+  border-radius: 16px;
+  overflow: hidden;
+  box-shadow: var(--card-shadow);
+  transition: all 0.3s ease;
+  text-decoration: none;
+  color: inherit;
+  display: block;
 }
-.route-spot {
-  background: linear-gradient(135deg, var(--safari-gold), var(--safari-orange));
-  color: #fff; padding: 8px 14px; border-radius: 18px; font-size: 13px; font-weight: 500;
-}
-.route-arrow { color: var(--safari-gold); font-size: 16px; font-weight: 700; }
 
-/* 时间线 */
-.timeline { position: relative; padding-left: 28px; }
-.timeline::before {
-  content: ''; position: absolute; left: 7px; top: 0; bottom: 0; width: 3px;
-  background: linear-gradient(180deg, var(--safari-gold), var(--safari-orange), var(--safari-green));
-  border-radius: 2px;
+.card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 16px 48px rgba(0,0,0,0.12);
 }
-.timeline-item {
-  position: relative; margin-bottom: 20px; padding: 18px 22px;
-  background: #fff; border-radius: 14px; box-shadow: var(--card-shadow);
+
+.card-cover {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 64px;
+  background: linear-gradient(135deg, #f5f5f5, #e0e0e0);
 }
-.timeline-item::before {
-  content: ''; position: absolute; left: -25px; top: 22px;
-  width: 12px; height: 12px; background: var(--safari-orange);
-  border-radius: 50%; border: 3px solid var(--safari-cream); box-shadow: 0 0 0 2px var(--safari-orange);
+
+.card-cover.travel { background: linear-gradient(135deg, #F39C12, #E74C3C); }
+.card-cover.photo { background: linear-gradient(135deg, #9B59B6, #3498DB); }
+.card-cover.reading { background: linear-gradient(135deg, #1ABC9C, #2ECC71); }
+
+.card-body {
+  padding: 24px;
 }
-.timeline-day {
+
+.card-tag {
   display: inline-block;
-  background: linear-gradient(135deg, var(--safari-gold), var(--safari-orange));
-  color: #fff; padding: 3px 12px; border-radius: 10px; font-size: 12px; font-weight: 700; margin-bottom: 8px;
-}
-.timeline-date { font-size: 12px; color: var(--text-muted); margin-left: 8px; }
-.timeline-title {
-  font-family: 'Noto Serif SC', serif; font-size: 16px; font-weight: 700; color: var(--text-dark); margin-bottom: 6px;
-}
-.timeline-desc { font-size: 13px; color: var(--text-body); line-height: 1.8; }
-.timeline-highlights { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 8px; }
-.timeline-hl {
-  background: rgba(74, 124, 89, 0.1); color: var(--safari-green);
-  padding: 3px 10px; border-radius: 8px; font-size: 11px; font-weight: 500;
-}
-.hotel-info {
-  margin-top: 10px; padding: 10px 14px; border-radius: 10px;
-  background: #FFF9F0; border: 1px dashed rgba(212, 168, 83, 0.5);
-}
-.hotel-name { font-size: 12px; font-weight: 700; color: var(--safari-brown); }
-.hotel-desc { font-size: 11px; color: var(--text-muted); margin-top: 3px; }
-
-/* 动物 */
-.animal-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; margin: 16px 0; }
-.animal-item {
-  background: #fff; border-radius: 12px; padding: 16px 10px; text-align: center; box-shadow: var(--card-shadow);
-}
-.animal-emoji { font-size: 32px; margin-bottom: 6px; }
-.animal-name { font-size: 12px; font-weight: 700; color: var(--text-dark); }
-.animal-spot { font-size: 10px; color: var(--text-muted); margin-top: 3px; }
-
-/* 清单 */
-.checklist-category { margin-bottom: 20px; }
-.checklist-title { font-size: 15px; font-weight: 700; color: var(--safari-brown); margin-bottom: 10px; }
-.checklist-items { display: flex; flex-wrap: wrap; gap: 8px; }
-.checklist-item {
-  background: #fff; border: 1px solid rgba(212, 168, 83, 0.3);
-  padding: 6px 14px; border-radius: 18px; font-size: 12px; color: var(--text-body);
-}
-.checklist-item::before { content: '☐ '; color: var(--safari-gold); }
-
-/* Tips */
-.tip-card {
-  background: #fff; border-radius: 14px; padding: 18px 22px; margin-bottom: 12px;
-  box-shadow: var(--card-shadow); border-left: 4px solid var(--safari-sunset);
-}
-.tip-card.warning { border-left-color: #E74C3C; background: #FFF5F5; }
-.tip-card.green { border-left-color: var(--safari-green); background: #F5FFF8; }
-.tip-title { font-size: 14px; font-weight: 700; color: var(--text-dark); margin-bottom: 4px; }
-.tip-text { font-size: 12px; color: var(--text-body); line-height: 1.8; }
-
-/* 签证 */
-.visa-step {
-  display: flex; align-items: flex-start; gap: 14px;
-  background: #fff; border-radius: 14px; padding: 20px 22px; margin-bottom: 12px; box-shadow: var(--card-shadow);
-}
-.visa-step-num {
-  width: 32px; height: 32px;
-  background: linear-gradient(135deg, var(--safari-gold), var(--safari-orange));
-  border-radius: 50%; display: flex; align-items: center; justify-content: center;
-  color: #fff; font-weight: 700; font-size: 14px; flex-shrink: 0;
-}
-.visa-step-title { font-size: 15px; font-weight: 700; color: var(--text-dark); margin-bottom: 4px; }
-.visa-step-desc { font-size: 12px; color: var(--text-body); line-height: 1.8; }
-
-/* 酒店详情 */
-.hotel-detail-card {
-  background: #fff; border-radius: 14px; padding: 22px; margin-bottom: 16px;
-  box-shadow: var(--card-shadow); border: 1px solid rgba(212, 168, 83, 0.2);
-  position: relative; overflow: hidden;
-}
-.hotel-detail-card::before {
-  content: ''; position: absolute; top: 0; left: 0; width: 4px; height: 100%;
-  background: linear-gradient(180deg, var(--safari-gold), var(--safari-orange));
-}
-.hotel-detail-header {
-  display: flex; align-items: center; gap: 10px; margin-bottom: 10px;
-}
-.hotel-detail-tag {
-  background: linear-gradient(135deg, var(--safari-gold), var(--safari-orange));
-  color: #fff; padding: 3px 10px; border-radius: 8px; font-size: 11px; font-weight: 700;
-}
-.hotel-detail-location { font-size: 12px; color: var(--text-muted); }
-.hotel-detail-name {
-  font-family: 'Noto Serif SC', serif; font-size: 16px; font-weight: 700;
-  color: var(--text-dark); margin-bottom: 2px;
-}
-.hotel-detail-name-cn { font-size: 13px; color: var(--text-muted); margin-bottom: 10px; }
-.hotel-detail-desc { font-size: 13px; color: var(--text-body); line-height: 1.8; margin-bottom: 12px; }
-.hotel-detail-highlights { display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 10px; }
-.hotel-detail-hl {
-  background: rgba(74, 124, 89, 0.1); color: var(--safari-green);
-  padding: 4px 10px; border-radius: 8px; font-size: 11px; font-weight: 500;
-}
-.hotel-detail-tip {
-  font-size: 12px; color: var(--safari-orange); font-weight: 500;
-  padding: 8px 12px; background: #FFF9F0; border-radius: 8px;
-  border: 1px dashed rgba(212, 168, 83, 0.4);
+  font-size: 12px;
+  color: var(--accent);
+  font-weight: 500;
+  margin-bottom: 8px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
 }
 
-/* 安全 */
-.emergency-box {
-  background: linear-gradient(135deg, #FFF5F5, #FFE8E8); border: 2px solid #E74C3C;
-  border-radius: 14px; padding: 22px; margin-bottom: 16px; text-align: center;
+.card-title {
+  font-size: 18px;
+  font-weight: 700;
+  margin-bottom: 8px;
+  line-height: 1.4;
 }
-.emergency-title { font-size: 14px; font-weight: 700; color: #C0392B; margin-bottom: 8px; }
-.emergency-number { font-size: 22px; font-weight: 900; color: #E74C3C; font-family: 'Noto Serif SC', serif; }
-.emergency-desc { font-size: 12px; color: #8B4513; margin-top: 6px; }
 
-/* 尾页 */
-.footer-card {
-  width: 750px; height: 500px;
-  background: linear-gradient(180deg, #2D1B0E 0%, #5C3D2E 50%, #8B6914 100%);
-  border-radius: 12px; display: flex; flex-direction: column;
-  align-items: center; justify-content: center; position: relative; overflow: hidden;
+.card-desc {
+  font-size: 14px;
+  color: var(--text-light);
+  line-height: 1.6;
 }
-.footer-card::before {
-  content: ''; position: absolute; top: 40px; left: 50%; transform: translateX(-50%);
-  width: 80px; height: 80px; background: radial-gradient(circle, #F7A941 0%, transparent 70%);
-  border-radius: 50%; opacity: 0.4;
+
+.card-meta {
+  margin-top: 16px;
+  font-size: 12px;
+  color: #999;
+  display: flex;
+  gap: 16px;
 }
-.footer-text {
-  font-family: 'Noto Serif SC', serif; font-size: 32px; font-weight: 700;
-  color: rgba(255,255,255,0.9); text-align: center; position: relative; z-index: 1; line-height: 1.6;
+
+/* Coming Soon */
+.coming-soon {
+  text-align: center;
+  padding: 60px 20px;
+  color: var(--text-light);
+  font-size: 15px;
 }
-.footer-sub { font-size: 14px; color: rgba(255,255,255,0.6); margin-top: 16px; position: relative; z-index: 1; }
-.footer-tags {
-  display: flex; gap: 10px; margin-top: 24px; position: relative; z-index: 1;
-  flex-wrap: wrap; justify-content: center;
+
+.coming-soon-icon {
+  font-size: 48px;
+  margin-bottom: 16px;
 }
-.footer-tag { color: rgba(255,255,255,0.6); font-size: 12px; }
+
+/* Footer */
+.footer {
+  text-align: center;
+  padding: 40px 20px;
+  color: #999;
+  font-size: 13px;
+  border-top: 1px solid #eee;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .hero-name { font-size: 32px; }
+  .hero-tagline { font-size: 15px; }
+  .section { padding: 60px 16px; }
+  .section-title { font-size: 26px; }
+  .cards-grid { grid-template-columns: 1fr; }
+}
 </style>
 </head>
 <body>
-<div class="page-container">
 
-<!-- ===== 封面 ===== -->
-<div class="cover-card">
-  <div class="cover-top-title">肯尼亚Safari<br>保姆级攻略</div>
-  <div class="cover-subtitle">追逐非洲五霸的梦想之旅</div>
-  <div class="cover-tags">
-    <span class="cover-tag">🗓 端午节</span>
-    <span class="cover-tag">🌍 自由行 · Safari官网找地接社</span>
-    <span class="cover-tag">💰 人均2.4w</span>
+<!-- Hero -->
+<section class="hero">
+  <div class="hero-content">
+    <div class="hero-avatar">🌍</div>
+    <h1 class="hero-name">VeraTraces</h1>
+    <p class="hero-tagline">用脚步丈量世界，用镜头记录生活，用文字沉淀思考</p>
+    <nav class="hero-nav">
+      <a href="#travel">旅行攻略</a>
+      <a href="#photography">摄影作品</a>
+      <a href="#reading">读书笔记</a>
+    </nav>
   </div>
-  <div class="cover-info">内罗毕 → 安博塞利 → 奈瓦沙湖 → 纳库鲁湖 → 马赛马拉 → 内罗毕</div>
-</div>
+</section>
 
-<!-- ===== 基本信息 ===== -->
-<div class="content-card">
-  <div class="card-number">01</div>
+<!-- 旅行攻略 -->
+<section class="section" id="travel">
   <div class="section-header">
-    <span class="section-icon">📋</span>
-    <div>
-      <div class="section-title">基本信息</div>
-      <div class="section-subtitle">BASIC INFO</div>
-    </div>
+    <h2 class="section-title">旅行攻略</h2>
+    <p class="section-subtitle">走过的路，都是风景</p>
   </div>
-  <div class="info-grid">
-    <div class="info-item">
-      <div class="info-label">旅行时间</div>
-      <div class="info-value">
-        <span class="hl">5.31(周六) - 6.9(周一) · 9天7晚</span><br>
-        <span class="sm">5.31 北京出发 → 6.1 抵达内罗毕 | 6.8 内罗毕出发 → 6.9 回京<br>✨ 端午节出行，人少景美价优</span>
+  <div class="cards-grid">
+    <a class="card" href="./travel/kenya.html">
+      <div class="card-cover travel">🦁</div>
+      <div class="card-body">
+        <span class="card-tag">非洲 · Safari</span>
+        <h3 class="card-title">肯尼亚Safari保姆级攻略</h3>
+        <p class="card-desc">端午节9天7晚，追逐非洲五霸的梦想之旅。内罗毕→安博塞利→奈瓦沙湖→纳库鲁湖→马赛马拉，人均2.4w。</p>
+        <div class="card-meta">
+          <span>🗓 2026年端午</span>
+          <span>📍 肯尼亚</span>
+        </div>
       </div>
-    </div>
-    <div class="info-item">
-      <div class="info-label">旅行模式</div>
-      <div class="info-value">
-        <span class="hl">自由行 · Safari官网找当地地接社 · 全程包办</span><br>
-        <span class="sm">⚠️ 肯尼亚国家公园必须由有资质的地接社带入，不允许自驾！<br>地接全包：接送机+全程交通+酒店(含三餐)+向导+景区门票+游船</span>
-      </div>
-    </div>
+    </a>
   </div>
-</div>
+</section>
 
-<!-- ===== 费用明细 ===== -->
-<div class="content-card">
-  <div class="card-number">02</div>
+<!-- 摄影作品 -->
+<section class="section" id="photography">
   <div class="section-header">
-    <span class="section-icon">💰</span>
-    <div>
-      <div class="section-title">费用明细</div>
-      <div class="section-subtitle">BUDGET BREAKDOWN</div>
-    </div>
+    <h2 class="section-title">摄影作品</h2>
+    <p class="section-subtitle">每一次按下快门，都是与美好的对话</p>
   </div>
-  <div class="cost-total">
-    <div class="cost-total-label">人均总费用（约）</div>
-    <div class="cost-total-value">23,600<span class="unit"> 元</span></div>
+  <div class="coming-soon">
+    <div class="coming-soon-icon">📷</div>
+    <p>作品整理中，敬请期待...</p>
   </div>
-  <div class="cost-breakdown">
-    <div class="cost-item"><div class="cost-item-icon">✈️</div><div class="cost-item-label">往返机票</div><div class="cost-item-value">¥4,296</div></div>
-    <div class="cost-item"><div class="cost-item-icon">🚗</div><div class="cost-item-label">地接(含酒店餐食)</div><div class="cost-item-value">$2,335</div></div>
-    <div class="cost-item"><div class="cost-item-icon">📝</div><div class="cost-item-label">ETA签证</div><div class="cost-item-value">≈¥279</div></div>
-    <div class="cost-item"><div class="cost-item-icon">💉</div><div class="cost-item-label">黄热疫苗</div><div class="cost-item-value">≈¥200-300</div></div>
-    <div class="cost-item"><div class="cost-item-icon">🛡️</div><div class="cost-item-label">境外保险</div><div class="cost-item-value">≈¥256</div></div>
-    <div class="cost-item"><div class="cost-item-icon">💵</div><div class="cost-item-label">小费+纪念品</div><div class="cost-item-value">≈$200</div></div>
-  </div>
-  <div class="money-box">
-    <div class="money-title">💡 换汇建议</div>
-    <div class="money-list">
-      🔹 准备 <b>200~500美元</b> 现金（小费+纪念品+应急）<br>
-      🔹 银行预约换汇，要一些 <b>1美元、10美元小额纸币</b>（给小费用）<br>
-      🔹 向导小费标准：每人每天 <b>10美元</b><br>
-      🔹 酒店行李小费：每次 <b>1美元</b>
-    </div>
-  </div>
-</div>
+</section>
 
-<!-- ===== 路线+行程 ===== -->
-<div class="content-card">
-  <div class="card-number">03</div>
+<!-- 读书笔记 -->
+<section class="section" id="reading">
   <div class="section-header">
-    <span class="section-icon">🗺️</span>
-    <div>
-      <div class="section-title">行程路线</div>
-      <div class="section-subtitle">ITINERARY</div>
-    </div>
+    <h2 class="section-title">读书笔记</h2>
+    <p class="section-subtitle">在文字中寻找另一种旅行</p>
   </div>
-  <div class="route-flow">
-    <span class="route-spot">✈️ 北京</span>
-    <span class="route-arrow">→</span>
-    <span class="route-spot">🏙️ 内罗毕</span>
-    <span class="route-arrow">→</span>
-    <span class="route-spot">🐘 安博塞利</span>
-    <span class="route-arrow">→</span>
-    <span class="route-spot">🦛 奈瓦沙湖</span>
-    <span class="route-arrow">→</span>
-    <span class="route-spot">🦩 纳库鲁湖</span>
-    <span class="route-arrow">→</span>
-    <span class="route-spot">🦁 马赛马拉</span>
-    <span class="route-arrow">→</span>
-    <span class="route-spot">✈️ 回京</span>
+  <div class="coming-soon">
+    <div class="coming-soon-icon">📚</div>
+    <p>笔记整理中，敬请期待...</p>
   </div>
+</section>
 
-  <div class="timeline">
-    <div class="timeline-item">
-      <span class="timeline-day">Day 0-1</span><span class="timeline-date">5.31-6.1</span>
-      <div class="timeline-title">北京 → 安博塞利国家公园</div>
-      <div class="timeline-desc">15:30北京起飞，次日抵达内罗毕后直奔安博塞利。下午第一次游猎，乞力马扎罗山下追象群！游览安博塞利最棒的事情就是能看到长着巨大象牙的大象，背后是非洲最高峰乞力马扎罗山（海拔 5895 米）。这里也是观赏狮子、猎豹、斑马、水牛、长颈鹿、鬣狗、角马和瞪羚的绝佳之地。此外，这里已记录到 420 种鸟类，所以记得带上望远镜。</div>
-      <div class="timeline-highlights">
-        <span class="timeline-hl">🐘 大象天堂</span>
-        <span class="timeline-hl">🏔️ 乞力马扎罗山</span>
-        <span class="timeline-hl">🌅 日落游猎</span>
-      </div>
-      <div class="hotel-info">
-        <div class="hotel-name">🏨 Amboseli Serena Safari Lodge</div>
-        <div class="hotel-desc">游泳池+自助餐 | 直面乞力马扎罗山 | 坐拥安博塞利最佳象群观赏地</div>
-      </div>
-    </div>
+<!-- Footer -->
+<footer class="footer">
+  <p>© 2026 VeraTraces · 旅行 · 摄影 · 阅读</p>
+</footer>
 
-    <div class="timeline-item">
-      <span class="timeline-day">Day 2</span><span class="timeline-date">6.2</span>
-<div class="timeline-title">安博塞利 · 全天游猎</div>
-<div class="timeline-desc">清晨7:30出发追踪动物，上午黄金观赏时段拍摄大象、猴子等与乞力马扎罗山同框，下午继续探索沼泽地带。</div>
-      <div class="timeline-highlights">
-        <span class="timeline-hl">📷 最佳拍摄</span>
-        <span class="timeline-hl">🦒 长颈鹿</span>
-        <span class="timeline-hl">🦅 420种鸟类</span>
-      </div>
-    </div>
-
-    <div class="timeline-item">
-      <span class="timeline-day">Day 3</span><span class="timeline-date">6.3</span>
-      <div class="timeline-title">奈瓦沙湖 · 游船+新月岛徒步</div>
-      <div class="timeline-desc">上午驱车前往奈瓦沙湖，下午游船观河马、看鸬鹚捕鱼表演，登新月岛徒步。乘船游览可以观赏河马、各种水鸟，欣赏湖光山色，在新月岛徒步还能看到水羚、长颈鹿、斑马等动物；这里还是观鸟爱好者的天堂，是世界鸟类协会认定的"全球十大观鸟基地"之一。</div>
-      <div class="timeline-highlights">
-        <span class="timeline-hl">🦛 近距离河马</span>
-        <span class="timeline-hl">🚣 游船</span>
-        <span class="timeline-hl">🏝️ 新月岛</span>
-      </div>
-      <div class="hotel-info">
-        <div class="hotel-name">🏨 Naivasha Sopa Resort（长颈鹿酒店）</div>
-        <div class="hotel-desc">毗邻奈瓦沙湖 | 斑马、长颈鹿等动物自由穿行园区 | 全程最佳酒店</div>
-      </div>
-    </div>
-
-    <div class="timeline-item">
-      <span class="timeline-day">Day 4</span><span class="timeline-date">6.4</span>
-      <div class="timeline-title">埃尔门泰塔湖 + 纳库鲁湖</div>
-      <div class="timeline-desc">上午去埃尔门泰塔湖看火烈鸟，不过6月初没有几只火烈鸟，但是湖边风景很优美。下午驱车深入纳库鲁湖国家公园，白犀牛与黑犀牛低头漫步，庞大身躯与宁静神情形成奇妙反差；成群水牛横越公路，车辆只能礼让。湖畔芦苇丛间，鱼鹰、鹈鹕、翠鸟穿梭飞舞，堪称鸟类摄影师的天堂。运气好的话，还能偶遇睡觉的狮子。若恰好遇上雨天，那便是意外之喜，雨雾轻笼湖面与森林，将高大的金合欢树染成了墨绿色，整个草原弥漫着一种朦胧的荒野感。是我最喜欢的一段行程。</div>
-      <div class="timeline-highlights">
-        <span class="timeline-hl">🦩 火烈鸟</span>
-        <span class="timeline-hl">🦏 黑白犀牛</span>
-        <span class="timeline-hl">🦁 爬树狮子</span>
-      </div>
-      <div class="hotel-info">
-        <div class="hotel-name">🏨 Sarova Lion Hill Game Lodge</div>
-        <div class="hotel-desc">坐落于狮子山丘之上 | 灌木丛风格 | 记得带驱蚊水</div>
-      </div>
-    </div>
-
-    <div class="timeline-item">
-      <span class="timeline-day">Day 5-7</span><span class="timeline-date">6.5-6.7</span>
-      <div class="timeline-title">马赛马拉 · 三天深度游猎</div>
-      <div class="timeline-desc">肯尼亚的精华，尽在马赛马拉！这里的野生动物数量令人惊叹：狮子、花豹、猎豹是当之无愧的明星，大象、长颈鹿、水牛、角马、斑马、河马、鬣狗、黑斑羚随处可见。别忘了带上望远镜——保护区内已记录超过500种鸟类。每天更是惊喜不断：追逐狮群与猎豹的矫健身影，在金合欢树下享受野餐，看鳄鱼在马拉河边静静潜伏。而马拉河本身优美蜿蜒，河马成群、鳄鱼懒卧，奏响着草原最原始的生命节拍。雨后的马赛马拉，朝霞染透湿润的草甸，每一滴露珠都闪烁着金光；待到傍晚，日落将整片草原烧成琥珀色，金合欢树的剪影，便是最动人的句点。</div>
-      <div class="timeline-highlights">
-        <span class="timeline-hl">🦁 非洲五霸</span>
-        <span class="timeline-hl">🐆 猎豹</span>
-        <span class="timeline-hl">🐊 鳄鱼</span>
-        <span class="timeline-hl">🌳 树下野餐</span>
-      </div>
-      <div class="hotel-info">
-        <div class="hotel-name">🏨 Zebra Plains Mara Camp（奢华帐篷）</div>
-        <div class="hotel-desc">时尚游猎帐篷 | 该地区最佳餐饮之一 | 绝佳观景酒吧</div>
-      </div>
-    </div>
-
-    <div class="timeline-item">
-      <span class="timeline-day">Day 8-9</span><span class="timeline-date">6.8-6.9</span>
-      <div class="timeline-title">马赛马拉 → 内罗毕 → 北京</div>
-      <div class="timeline-desc">下午15:00航班回国，前往机场途中可买纪念品。</div>
-      <div class="timeline-highlights">
-        <span class="timeline-hl">🎁 纪念品</span>
-        <span class="timeline-hl">✈️ 回家</span>
-      </div>
-    </div>
-  </div>
-</div>
-
-<!-- ===== 机票购买Tips ===== -->
-<div class="content-card">
-  <div class="card-number">04</div>
-  <div class="section-header">
-    <span class="section-icon">✈️</span>
-    <div>
-      <div class="section-title">机票购买Tips</div>
-      <div class="section-subtitle">FLIGHT BOOKING TIPS</div>
-    </div>
-  </div>
-
-  <div class="money-box" style="border-left: 3px solid #ff6b6b;">
-    <div class="money-title">🔍 购票渠道推荐</div>
-    <div class="money-list">
-      🔹 <b>淘宝飞猪官方旗舰店</b>：经常有国内飞内罗毕的卡次（兑换券），可提前购买囤着，价格比直接买便宜不少<br>
-      🔹 <b>南航APP官方活动</b>：关注南方航空APP不定期的促销活动，经常有非洲航线特价<br>
-      🔹 <b>建议提前3-4个月关注价格</b>，对比多个平台后再下手
-    </div>
-  </div>
-
-  <div class="money-box" style="border-left: 3px solid #ff6b6b;">
-    <div class="money-title">🛫 我的航班实录</div>
-    <div class="money-list">
-      🔹 去程：5.31 周六 15:30 北京起飞 → 6.1 抵达内罗毕（经停/转机，全程约18h+）<br>
-      🔹 回程：6.8 周日 15:00 内罗毕出发 → 6.9 抵达北京<br>
-      🔹 往返机票 <b>¥4,296/人</b><br><br>
-      ⚠️ <b>转机提醒：</b>国内直飞内罗毕的航班极少，基本都要转机（如经广州/多哈/迪拜等），全程飞行+转机等候 <b>18-24小时</b>，建议穿舒适衣物、带颈枕眼罩，做好"屁股受苦"的心理准备！到了之后直接开始safari，兴奋感会冲淡一切疲惫～
-    </div>
-  </div>
-</div>
-
-<!-- ===== 地接社选择 ===== -->
-<div class="content-card">
-  <div class="card-number">05</div>
-  <div class="section-header">
-    <span class="section-icon">🤝</span>
-    <div>
-      <div class="section-title">找地接社攻略</div>
-      <div class="section-subtitle">HOW TO FIND A LOCAL OPERATOR</div>
-    </div>
-  </div>
-
-  <div class="money-box" style="border-left: 3px solid #4CAF50;">
-    <div class="money-title">🔍 找地接社渠道</div>
-    <div class="money-list">
-      🔹 <b>SafariBookings.com</b>（推荐！）：全球最大Safari预订平台，可按评分、价格、行程筛选，有大量真实用户评价<br>
-      🔹 <b>TripAdvisor</b>：搜索 "Kenya Safari" 看排名靠前的地接社<br>
-      🔹 <b>小红书/马蜂窝</b>：搜同路线游记，找博主推荐的地接社，可私信要联系方式<br>
-      🔹 <b>Instagram</b>：搜索 #kenyasafari 标签，很多地接社会发实拍作品<br>
-      🔹 <b>朋友推荐</b>：最靠谱的渠道，去过的朋友口碑最真实
-    </div>
-  </div>
-
-  <div class="money-box" style="border-left: 3px solid #2196F3;">
-    <div class="money-title">💡 选择技巧与注意事项</div>
-    <div class="money-list">
-      🔹 <b>看评价数量和评分</b>：SafariBookings上至少50+评价、4.5分以上的比较靠谱<br>
-      🔹 <b>多家对比报价</b>：同样行程建议联系3-5家对比，价格差异可达30%<br>
-      🔹 <b>明确包含项</b>：确认报价是否含酒店、餐食、门票、接送机、游船等，避免隐形消费<br>
-      🔹 <b>确认向导资质</b>：问清向导是否有肯尼亚旅游局认证执照<br>
-      🔹 <b>付款方式</b>：一般30%定金（签合同时汇款）+ 70%尾款（到达后现金），定金不退需注意<br>
-      🔹 <b>沟通响应速度</b>：靠谱的地接社一般24小时内回复，WhatsApp沟通最方便<br>
-      🔹 <b>要求签正式合同</b>：明确行程、酒店标准、取消政策，保留书面记录
-    </div>
-  </div>
-
-  <div class="money-box" style="border-left: 3px solid #4CAF50;">
-    <div class="money-title">✅ 我的选择：Journey beyond Africa（JBA地接社）</div>
-    <div class="money-list">
-      🔹 <b>专属向导</b>：Peter（经验丰富，中英文沟通无障碍）<br>
-      🔹 <b>费用</b>：$2,335/人（含酒店+三餐+交通+门票+游船）<br>
-      🔹 <b>付款</b>：30%定金银行汇款 + 70%尾款到达后现金支付<br>
-      🔹 <b>换汇建议</b>：中行卡换汇，注意双边手续费（国内≈200元 + 国外≈25美元）
-    </div>
-  </div>
-</div>
-
-<!-- ===== 酒店介绍 ===== -->
-<div class="content-card">
-  <div class="card-number">06</div>
-  <div class="section-header">
-    <span class="section-icon">🏨</span>
-    <div>
-      <div class="section-title">住宿推荐</div>
-      <div class="section-subtitle">ACCOMMODATION GUIDE</div>
-    </div>
-  </div>
-  <p style="font-size:14px;color:var(--text-body);line-height:1.8;margin-bottom:20px;">
-    全程住宿均由地接社安排，含三餐，以下是各站酒店详细介绍 👇
-  </p>
-
-  <div class="hotel-detail-card">
-    <div class="hotel-detail-header">
-      <span class="hotel-detail-tag">Day 1-2</span>
-      <span class="hotel-detail-location">📍 安博塞利国家公园</span>
-    </div>
-    <div class="hotel-detail-name">Amboseli Serena Safari Lodge</div>
-    <div class="hotel-detail-name-cn">安博塞利塞雷娜酒店</div>
-    <div class="hotel-detail-desc">
-      安博塞利国家公园内的标志性野奢度假村，以乞力马扎罗雪山为背景，可近距离观赏大象群落
-    </div>
-    <div class="hotel-detail-highlights">
-      <span class="hotel-detail-hl">🏕️ 非洲传统茅草风格客房，融入马赛文化元素</span>
-      <span class="hotel-detail-hl">🐘 坐拥安博塞利最佳象群观赏地</span>
-      <span class="hotel-detail-hl">🌋 窗外直面乞力马扎罗山，日出日落绝美</span>
-      <span class="hotel-detail-hl">💧 游泳池、Spa、野生动物主题餐厅</span>
-      <span class="hotel-detail-hl">🌿 Serena集团生态保护承诺</span>
-    </div>
-    <div class="hotel-detail-tip">💡 全程餐食最好吃的一家！自助餐形式，酒水饮料需付费，房间和Safari车上有免费水</div>
-  </div>
-
-  <div class="hotel-detail-card">
-    <div class="hotel-detail-header">
-      <span class="hotel-detail-tag">Day 3</span>
-      <span class="hotel-detail-location">📍 奈瓦沙湖</span>
-    </div>
-    <div class="hotel-detail-name">Naivasha Sopa Resort</div>
-    <div class="hotel-detail-name-cn">奈瓦沙索帕度假村（长颈鹿酒店）</div>
-    <div class="hotel-detail-desc">
-      肯尼亚奈瓦沙湖畔的生态度假村，人与野生动物零距离共处。
-    </div>
-    <div class="hotel-detail-highlights">
-      <span class="hotel-detail-hl">🏡 非洲风情小屋散布于广阔绿地</span>
-      <span class="hotel-detail-hl">🌊 毗邻奈瓦沙湖，可游船观鸟</span>
-      <span class="hotel-detail-hl">🦒 长颈鹿造访酒店草坪，可近距离喂食</span>
-      <span class="hotel-detail-hl">🦛 河马、水牛、斑马等自由穿行</span>
-      <span class="hotel-detail-hl">🌺 花园景观优美，远离都市喧嚣</span>
-      <span class="hotel-detail-hl">🚴 骑行、徒步、马术、皮划艇</span>
-    </div>
-    <div class="hotel-detail-tip">💡 斑马在园区吃草，长颈鹿在窗前。⚠️ 晚上注意河马！</div>
-  </div>
-
-  <div class="hotel-detail-card">
-    <div class="hotel-detail-header">
-      <span class="hotel-detail-tag">Day 4</span>
-      <span class="hotel-detail-location">📍 纳库鲁湖</span>
-    </div>
-    <div class="hotel-detail-name">Sarova Lion Hill Game Lodge</div>
-    <div class="hotel-detail-name-cn">萨罗瓦狮子山狩猎小屋</div>
-    <div class="hotel-detail-desc">
-      纳库鲁湖国家公园内的高端游猎酒店，坐拥裂谷湖景全景。
-    </div>
-    <div class="hotel-detail-highlights">
-      <span class="hotel-detail-hl">🏔 建于山丘高处，俯瞰纳库鲁湖全景</span>
-      <span class="hotel-detail-hl">🏡 石砌小屋掩映在丛林之中，非洲田园风情</span>
-      <span class="hotel-detail-hl">🦏 距火烈鸟观景点、犀牛保护区仅几分钟车程</span>
-      <span class="hotel-detail-hl">🌿 园区花草繁茂，松鼠和小羚羊常来拜访</span>
-      <span class="hotel-detail-hl">🍽 餐食丰富，含多种非洲特色菜品</span>
-      <span class="hotel-detail-hl">🏊 户外泳池可远眺裂谷景色</span>
-    </div>
-    <div class="hotel-detail-tip">💡 记得带驱蚊水！丛林环境蚊虫较多</div>
-  </div>
-
-  <div class="hotel-detail-card">
-    <div class="hotel-detail-header">
-      <span class="hotel-detail-tag">Day 5-7</span>
-      <span class="hotel-detail-location">📍 马赛马拉</span>
-    </div>
-    <div class="hotel-detail-name">Zebra Plains Mara Camp</div>
-    <div class="hotel-detail-name-cn">斑马平原马赛营地（奢华帐篷）</div>
-    <div class="hotel-detail-desc">
-      马赛马拉核心私人保护区内的精品野奢帐篷营地，远离人群、独享原始草原。
-    </div>
-    <div class="hotel-detail-highlights">
-      <span class="hotel-detail-hl">⛺ 仅8顶帐篷，私密性极高</span>
-      <span class="hotel-detail-hl">🛏 帐篷内设独立卫浴、热水淋浴和四柱床</span>
-      <span class="hotel-detail-hl">🦁 位于私人保护区，可夜间Game Drive和步行Safari</span>
-      <span class="hotel-detail-hl">🍽 全包式服务，含草原烛光晚餐和丛林早午茶</span>
-      <span class="hotel-detail-hl">🌅 帐篷前阳台可直接观看日出和动物迁徙</span>
-      <span class="hotel-detail-hl">👨‍🍳 厨师水准极高，中西融合餐令人惊喜</span>
-    </div>
-    <div class="hotel-detail-tip">💡 全程最期待的住宿！帐篷内设施齐全，夜晚可能听到动物叫声</div>
-  </div>
-</div>
-
-<!-- ===== 可以看到的动物 ===== -->
-<div class="content-card">
-  <div class="card-number">07</div>
-  <div class="section-header">
-    <span class="section-icon">🦁</span>
-    <div>
-      <div class="section-title">能看到什么动物？</div>
-      <div class="section-subtitle">WILDLIFE HIGHLIGHTS</div>
-    </div>
-  </div>
-  <p style="font-size:14px;color:var(--text-body);line-height:1.8;margin-bottom:16px;">
-    肯尼亚是野生动物的天堂，全程可能偶遇的明星动物们 👇
-  </p>
-  <div class="animal-grid">
-    <div class="animal-item"><div class="animal-emoji">🐘</div><div class="animal-name">非洲象</div><div class="animal-spot">安博塞利·900+头</div></div>
-    <div class="animal-item"><div class="animal-emoji">🦁</div><div class="animal-name">狮子</div><div class="animal-spot">马赛马拉</div></div>
-    <div class="animal-item"><div class="animal-emoji">🐆</div><div class="animal-name">猎豹/花豹</div><div class="animal-spot">马赛马拉</div></div>
-    <div class="animal-item"><div class="animal-emoji">🦏</div><div class="animal-name">黑白犀牛</div><div class="animal-spot">纳库鲁湖</div></div>
-    <div class="animal-item"><div class="animal-emoji">🐃</div><div class="animal-name">非洲水牛</div><div class="animal-spot">全程</div></div>
-    <div class="animal-item"><div class="animal-emoji">🦒</div><div class="animal-name">长颈鹿</div><div class="animal-spot">全程</div></div>
-    <div class="animal-item"><div class="animal-emoji">🦛</div><div class="animal-name">河马</div><div class="animal-spot">奈瓦沙湖</div></div>
-    <div class="animal-item"><div class="animal-emoji">🦩</div><div class="animal-name">火烈鸟</div><div class="animal-spot">埃尔门泰塔湖</div></div>
-    <div class="animal-item"><div class="animal-emoji">🦓</div><div class="animal-name">斑马</div><div class="animal-spot">全程</div></div>
-    <div class="animal-item"><div class="animal-emoji">🐊</div><div class="animal-name">鳄鱼</div><div class="animal-spot">马赛马拉·马拉河</div></div>
-    <div class="animal-item"><div class="animal-emoji">🦅</div><div class="animal-name">鸟类450+种</div><div class="animal-spot">全程</div></div>
-    <div class="animal-item"><div class="animal-emoji">🐗</div><div class="animal-name">角马/瞪羚</div><div class="animal-spot">马赛马拉</div></div>
-  </div>
-  <div class="tip-card green" style="margin-top:16px;">
-    <div class="tip-title">📷 最佳观赏时间</div>
-    <div class="tip-text">
-      黄金时段：日出前6:30 - 上午11:30 | 下午4:00 - 6:30<br>
-      6-10月草短容易发现动物，我们去的6月正好！
-    </div>
-  </div>
-</div>
-
-<!-- ===== 签证+疫苗+保险 ===== -->
-<div class="content-card">
-  <div class="card-number">08</div>
-  <div class="section-header">
-    <span class="section-icon">📝</span>
-    <div>
-      <div class="section-title">签证·疫苗·保险</div>
-      <div class="section-subtitle">VISA & VACCINATION & INSURANCE</div>
-    </div>
-  </div>
-  <div class="visa-step">
-    <div class="visa-step-num">1</div>
-    <div>
-      <div class="visa-step-title">ETA电子签证 ≈¥279</div>
-      <div class="visa-step-desc">
-        <b>什么是ETA？</b> 肯尼亚电子旅行授权，取代了传统签证，线上申请即可<br>
-        <b>有效期：</b>3个月（注意算好出发时间，别过期了！）<br>
-        <b>申请方式：</b>线上申请，可以按团队（Group）一起办<br><br>
-        <b>申请网址：</b><br>
-        &nbsp;&nbsp;• https://www.etakenya.go.ke/en<br>
-        &nbsp;&nbsp;• 草稿入口：https://etakenya.go.ke/draft<br><br>
-        <b>所需材料：</b><br>
-        &nbsp;&nbsp;• 护照信息页扫描件（有效期6个月以上）<br>
-        &nbsp;&nbsp;• 一寸白底证件照（电子版）<br>
-        &nbsp;&nbsp;• 酒店预订单或付款凭证<br>
-        &nbsp;&nbsp;• 往返航班确认单<br>
-        &nbsp;&nbsp;• 个人基本信息（地址、职业等）<br><br>
-        <b>注意事项：</b><br>
-        &nbsp;&nbsp;⚠️ 审批通过后一定要打印出来随身携带<br>
-        &nbsp;&nbsp;⚠️ 建议出发前2-3周申请，预留审批时间<br>
-        &nbsp;&nbsp;⚠️ 费用约$30（≈人民币279元），在线支付
-      </div>
-    </div>
-  </div>
-  <div class="visa-step">
-    <div class="visa-step-num">2</div>
-    <div>
-      <div class="visa-step-title">⚠️ 签证常见问题 & 解决方法</div>
-      <div class="visa-step-desc">
-        <b>Q1：ETA网站打不开/加载很慢？</b><br>
-        &nbsp;&nbsp;✅ 用VPN切换到非洲/欧洲节点；或换Chrome浏览器、清除缓存重试<br>
-        &nbsp;&nbsp;✅ 避开高峰期（北京时间晚8-11点），建议上午申请<br><br>
-        <b>Q2：照片上传失败/格式不对？</b><br>
-        &nbsp;&nbsp;✅ 要求：白底一寸证件照，JPEG格式，文件大小不超过500KB<br>
-        &nbsp;&nbsp;✅ 用手机修图APP裁剪为35mm×45mm，分辨率300dpi以上<br><br>
-        <b>Q3：提交后一直显示"Pending"怎么办？</b><br>
-        &nbsp;&nbsp;✅ 正常审批时间3-7个工作日，旺季可能延长至2周<br>
-        &nbsp;&nbsp;✅ 超过7天未出结果，登录Draft入口查看状态，检查是否需要补充材料<br>
-        &nbsp;&nbsp;✅ 可发邮件至 eta@immigration.go.ke 催办，附上申请编号<br><br>
-        <b>Q4：ETA申请时支付失败怎么办？</b><br>
-        &nbsp;&nbsp;✅ 仅支持Visa/MasterCard国际信用卡，不支持银联卡<br>
-        &nbsp;&nbsp;✅ 付款前务必关闭VPN，否则可能触发银行风控<br>
-        &nbsp;&nbsp;✅ 提前致电银行开通"境外无卡交易"和"外币在线支付"功能<br>
-        &nbsp;&nbsp;✅ 如果反复失败，换一张卡试试（推荐招行/中行Visa卡）<br>
-        &nbsp;&nbsp;✅ 部分银行会发短信确认，注意及时回复"Y"授权<br>
-        &nbsp;&nbsp;✅ 若页面报错但已扣款：等24小时后登录Draft查看状态，通常会自动确认<br>
-        &nbsp;&nbsp;✅ 若确认未扣款：清除浏览器缓存，换无痕模式重新进入支付页面<br>
-        &nbsp;&nbsp;✅ 终极方案：找淘宝代办（搜"肯尼亚ETA代办"），费用约¥400-500<br><br>
-        <b>Q5：信息填错了怎么办？</b><br>
-        &nbsp;&nbsp;✅ 未提交前：在Draft入口修改<br>
-        &nbsp;&nbsp;✅ 已提交：如姓名/护照号有误，需重新申请（费用不退）<br>
-        &nbsp;&nbsp;✅ 小贴士：填写前仔细核对护照信息，姓名用拼音大写<br><br>
-        <b>Q6：被拒签了怎么办？</b><br>
-        &nbsp;&nbsp;✅ 拒签原因通常是材料不完整或信息不一致<br>
-        &nbsp;&nbsp;✅ 修正问题后可立即重新申请，无间隔限制<br>
-        &nbsp;&nbsp;✅ 确保酒店预订单日期与申请日期匹配
-      </div>
-    </div>
-  </div>
-  <div class="visa-step">
-    <div class="visa-step-num">3</div>
-    <div>
-      <div class="visa-step-title">黄热病疫苗（必打！）≈¥200-300</div>
-      <div class="visa-step-desc">
-        <b>为什么要打？</b> 肯尼亚属于黄热病疫区，入境时海关可能查验"黄皮书"（国际预防接种证书），没有可能被拒绝入境！<br><br>
-        <b>接种时间：</b>出发前至少2周以上（疫苗需要时间生效）<br><br>
-        <b>去哪里打？</b><br>
-        &nbsp;&nbsp;• 搜索"海关总署国际旅行卫生保健中心"进行预约<br>
-        &nbsp;&nbsp;• 北京只有【和平里】这一个点可以打<br>
-        &nbsp;&nbsp;• 地址：北京市东城区和平里北街20号<br>
-        &nbsp;&nbsp;• 建议提前1-2周在网上预约，现场人多<br><br>
-        <b>接种流程：</b><br>
-        &nbsp;&nbsp;① 网上预约挂号<br>
-        &nbsp;&nbsp;② 携带身份证+护照到现场<br>
-        &nbsp;&nbsp;③ 填写健康申报表<br>
-        &nbsp;&nbsp;④ 医生问诊后接种（上臂三角肌注射）<br>
-        &nbsp;&nbsp;⑤ 现场发放"黄皮书"<br><br>
-        <b>注意事项：</b><br>
-        &nbsp;&nbsp;⚠️ 接种后可能有轻微发热、头痛，属正常反应<br>
-        &nbsp;&nbsp;⚠️ 黄皮书终身有效，以后去非洲/南美都能用<br>
-        &nbsp;&nbsp;⚠️ 接种当天避免剧烈运动和饮酒<br>
-        &nbsp;&nbsp;⚠️ 孕妇、免疫缺陷等人群需咨询医生
-      </div>
-    </div>
-  </div>
-  <div class="visa-step">
-    <div class="visa-step-num">4</div>
-    <div>
-      <div class="visa-step-title">境外保险 ≈¥105-256</div>
-      <div class="visa-step-desc">
-        <b>推荐：</b>平安境外险（有保险经理，方便理赔）<br>
-        购买链接：baoxian.pingan.com（搜索"境外旅行险"）<br><br>
-        <b>5.31-6.9保费参考：</b><br>
-        &nbsp;&nbsp;• 实惠计划：¥105<br>
-        &nbsp;&nbsp;• 优选计划：¥182<br>
-        &nbsp;&nbsp;• 尊贵计划：¥253<br>
-        &nbsp;&nbsp;• 钻石计划：¥420<br><br>
-        <b>其他选择：</b><br>
-        &nbsp;&nbsp;• 中国人保"优游保"境外旅行险（人保APP搜索"优游保"）<br>
-        &nbsp;&nbsp;• 美亚"万国游踪"（aig.com.cn）<br><br>
-        ⚠️ 购买机票后就可以提前买了，越早越好
-      </div>
-    </div>
-  </div>
-</div>
-
-<!-- ===== 行李清单 ===== -->
-<div class="content-card">
-  <div class="card-number">09</div>
-  <div class="section-header">
-    <span class="section-icon">🧳</span>
-    <div>
-      <div class="section-title">行李清单</div>
-      <div class="section-subtitle">PACKING LIST</div>
-    </div>
-  </div>
-
-  <div class="tip-card warning" style="margin-bottom:20px;">
-    <div class="tip-title">🚨 禁止事项</div>
-    <div class="tip-text">
-      ❌ 不能带塑料袋（包含包装袋），Kenya有"限塑令"，抓到罚款！<br>
-      ❌ 不能携带无人机
-    </div>
-  </div>
-
-  <div class="checklist-category">
-    <div class="checklist-title">📄 必备证件</div>
-    <div class="checklist-items">
-      <span class="checklist-item">护照(6个月+有效期)</span>
-      <span class="checklist-item">ETA签证打印件</span>
-      <span class="checklist-item">黄皮书(疫苗证明)</span>
-      <span class="checklist-item">机票行程单</span>
-      <span class="checklist-item">酒店预订单</span>
-      <span class="checklist-item">VISA信用卡</span>
-      <span class="checklist-item">美元+先令现金</span>
-      <span class="checklist-item">笔(填入境卡)</span>
-    </div>
-  </div>
-
-  <div class="checklist-category">
-    <div class="checklist-title">👕 衣物穿搭</div>
-    <div class="checklist-items">
-      <span class="checklist-item">冲锋衣(温差大必带)</span>
-      <span class="checklist-item">运动透气衣5-6套</span>
-      <span class="checklist-item">牛仔风(拍照好看)</span>
-      <span class="checklist-item">防晒衣</span>
-      <span class="checklist-item">徒步鞋</span>
-      <span class="checklist-item">拖鞋</span>
-      <span class="checklist-item">棒球帽/渔夫帽</span>
-      <span class="checklist-item">墨镜</span>
-      <span class="checklist-item">防尘面罩</span>
-      <span class="checklist-item">颈枕</span>
-    </div>
-  </div>
-
-  <div class="checklist-category">
-    <div class="checklist-title">📱 电子设备</div>
-    <div class="checklist-items">
-      <span class="checklist-item">英标插头转换器</span>
-      <span class="checklist-item">充电宝</span>
-      <span class="checklist-item">相机+长焦镜头(400mm以上)</span>
-      <span class="checklist-item">相机备用电池(多带几块!)</span>
-      <span class="checklist-item">手机挂绳</span>
-      <span class="checklist-item">肯尼亚电话卡(淘宝买)</span>
-    </div>
-  </div>
-  <div class="tip-card" style="margin: 12px 0; background: #fff8f0; border-radius: 10px; padding: 14px 16px; border-left: 3px solid #ff9500;">
-    <div style="font-weight: bold; color: #e67e00; margin-bottom: 6px;">📷 相机携带提醒</div>
-    <div style="font-size: 13px; color: #5a4a3a; line-height: 1.8;">
-      🔹 <b>镜头：长焦必带，400mm以上！</b>Safari拍动物距离远，200mm根本不够用，400-600mm才能拍到清晰特写<br>
-      🔹 <b>电池：多带几块备用电池！</b>全天游猎拍摄量巨大，一天轻松2000+张，一块电池撑不到下午<br>
-      🔹 建议带一个广角（风景+星空）+ 一个长焦（动物），双机身更高效<br>
-      🔹 防尘很重要！草原灰尘大，备好镜头盖、气吹和擦镜布
-    </div>
-  </div>
-
-  <div class="checklist-category">
-    <div class="checklist-title">💊 药品</div>
-    <div class="checklist-items">
-      <span class="checklist-item">抗疟疾药(青蒿素)</span>
-      <span class="checklist-item">止泻药(蒙脱石散)</span>
-      <span class="checklist-item">感冒药</span>
-      <span class="checklist-item">退烧药(布洛芬)</span>
-      <span class="checklist-item">驱蚊剂(DEET)</span>
-      <span class="checklist-item">创可贴+碘伏</span>
-      <span class="checklist-item">抗过敏药</span>
-      <span class="checklist-item">晕车药</span>
-    </div>
-  </div>
-
-  <div class="checklist-category">
-    <div class="checklist-title">🧴 日用品</div>
-    <div class="checklist-items">
-      <span class="checklist-item">防晒霜SPF50+</span>
-      <span class="checklist-item">晒后修复</span>
-      <span class="checklist-item">洗漱全套(酒店可能不提供)</span>
-      <span class="checklist-item">湿纸巾</span>
-      <span class="checklist-item">卫生纸</span>
-    </div>
-  </div>
-
-  <div class="checklist-category">
-    <div class="checklist-title">🍜 食物</div>
-    <div class="checklist-items">
-      <span class="checklist-item">老干妈</span>
-      <span class="checklist-item">榨菜</span>
-      <span class="checklist-item">泡面</span>
-      <span class="checklist-item">零食</span>
-    </div>
-  </div>
-</div>
-
-<!-- ===== 安全+Tips ===== -->
-<div class="content-card">
-  <div class="card-number">10</div>
-  <div class="section-header">
-    <span class="section-icon">⚠️</span>
-    <div>
-      <div class="section-title">安全须知 & Tips</div>
-      <div class="section-subtitle">SAFETY & TIPS</div>
-    </div>
-  </div>
-
-  <div class="emergency-box">
-    <div class="emergency-title">🆘 紧急联系方式</div>
-    <div class="emergency-number">外交部领事保护热线：+86-10-12308</div>
-    <div class="emergency-desc">24小时 | 中国驻肯尼亚大使馆领保专线：+254-20-2711222</div>
-  </div>
-
-  <div class="tip-card warning">
-    <div class="tip-title">🦁 Safari安全守则</div>
-    <div class="tip-text">
-      ① 全程听向导Peter的指挥，绝对不要下车<br>
-      ② 不要靠近河马！它们非常暴躁<br>
-      ③ 不要站在斑马/角马身后，可能被踢<br>
-      ④ 不要离火烈鸟太近，它们怕人会飞走<br>
-      ⑤ 不要离水牛太近
-    </div>
-  </div>
-
-  <div class="tip-card green">
-    <div class="tip-title">💡 实用小贴士</div>
-    <div class="tip-text">
-      ① 船上穿冲锋衣，有水花且冷<br>
-      ② 每天衣服会灰蒙蒙的，一天至少1套换洗<br>
-      ③ 温差很大！早晚冷中午热<br>
-      ④ 酒店房间和Safari车上有免费水<br>
-      ⑤ 安博塞利酒店的纪念品值得买
-    </div>
-  </div>
-
-  <div class="tip-card">
-    <div class="tip-title">🎁 纪念品购买点</div>
-    <div class="tip-text">
-      ① 安博塞利酒店内<br>
-      ② 前往安博塞利途中的路边店<br>
-      ③ 内罗毕机场<br>
-      ④ 前往机场途中<br>
-      ⚠️ 尽量避免接触当地小摊（卫生考虑）
-    </div>
-  </div>
-
-  <div class="tip-card">
-    <div class="tip-title">📷 拍摄Tips</div>
-    <div class="tip-text">
-      ① 黄金拍摄时段：6:30-11:30 / 16:00-18:30<br>
-      ② 安博塞利经典机位：大象+乞力马扎罗山<br>
-      ③ 带望远镜！鸟类超过450种<br>
-      ④ 带长焦镜头，动物不会配合你走近
-    </div>
-  </div>
-</div>
-
-<!-- ===== 尾页 ===== -->
-<div class="footer-card">
-  <div class="footer-text">
-    🌍<br>
-    去肯尼亚<br>
-    做一场非洲梦
-  </div>
-  <div class="footer-sub">收藏 ⭐ 这篇攻略，出发前一定用得上！</div>
-  <div class="footer-tags">
-    <span class="footer-tag">#肯尼亚Safari</span>
-    <span class="footer-tag">#非洲旅行</span>
-    <span class="footer-tag">#动物大迁徙</span>
-    <span class="footer-tag">#保姆级攻略</span>
-    <span class="footer-tag">#马赛马拉</span>
-    <span class="footer-tag">#安博塞利</span>
-    <span class="footer-tag">#旅行攻略</span>
-  </div>
-</div>
-
-</div>
 </body>
 </html>
