@@ -4,313 +4,494 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>肯尼亚Safari攻略 - 小红书长图文</title>
-<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;700;900&family=Noto+Sans+SC:wght@300;400;500;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;900&family=Noto+Serif+SC:wght@400;700;900&family=Noto+Sans+SC:wght@300;400;500;700&family=DM+Sans:wght@300;400;500;700&display=swap" rel="stylesheet">
 <style>
 :root {
-  --safari-gold: #D4A853;
-  --safari-orange: #E8834A;
-  --safari-brown: #5C3D2E;
-  --safari-cream: #FFF8F0;
-  --safari-green: #4A7C59;
-  --safari-sunset: #F4845F;
-  --safari-earth: #8B6914;
-  --card-shadow: 0 4px 20px rgba(92, 61, 46, 0.12);
-  --text-dark: #2D1B0E;
-  --text-body: #4A3728;
-  --text-muted: #8B7355;
+  --gold: #C8933C;
+  --gold-light: #E8B86D;
+  --amber: #D4763A;
+  --rust: #9E4B3C;
+  --earth: #5C3D2E;
+  --deep: #1A0F08;
+  --cream: #FDF8F2;
+  --sand: #F5EDE3;
+  --sage: #5B7B5E;
+  --sage-light: #7FA882;
+  --sky: #4A6FA5;
+  --card-bg: rgba(253, 248, 242, 0.95);
+  --glass: rgba(255, 255, 255, 0.08);
+  --shadow-soft: 0 8px 40px rgba(26, 15, 8, 0.08);
+  --shadow-hover: 0 20px 60px rgba(26, 15, 8, 0.15);
 }
 * { margin: 0; padding: 0; box-sizing: border-box; }
+html { scroll-behavior: smooth; }
 body {
-  background: #f5f0eb;
-  display: flex;
-  justify-content: center;
-  padding: 20px;
-  font-family: 'Noto Sans SC', sans-serif;
-}
-.page-container {
-  width: 750px;
-  display: flex;
-  flex-direction: column;
-  gap: 12px;
+  background: var(--sand);
+  font-family: 'Noto Sans SC', 'DM Sans', sans-serif;
+  color: #2D1B0E;
+  overflow-x: hidden;
 }
 
-/* 封面 */
+/* === Animated Background === */
+.bg-grain {
+  position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+  pointer-events: none; z-index: 9999; opacity: 0.03;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
+}
+
+/* === Page Container === */
+.page-container {
+  width: 750px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  padding: 0 0 40px;
+  position: relative;
+}
+
+/* === COVER === */
 .cover-card {
   width: 750px; height: 1000px;
   background-image: url('./cover-bg-fixed.png');
-  background-size: 750px auto;
-  background-repeat: no-repeat;
-  background-position: center top;
-  border-radius: 12px; position: relative; overflow: hidden;
+  background-size: cover;
+  background-position: center;
+  position: relative; overflow: hidden;
   display: flex; flex-direction: column; align-items: center; justify-content: flex-end;
-  padding-bottom: 80px;
+  padding-bottom: 60px;
 }
 .cover-card::before {
-  content: ''; position: absolute; bottom: 0; left: 0; right: 0; height: 450px;
-  background: linear-gradient(to top, rgba(10,5,0,0.85), rgba(10,5,0,0.4) 60%, transparent);
+  content: ''; position: absolute; inset: 0;
+  background: linear-gradient(180deg, rgba(10,5,0,0.2) 0%, rgba(10,5,0,0.1) 40%, rgba(10,5,0,0.6) 70%, rgba(10,5,0,0.9) 100%);
 }
 .cover-card::after {
-  content: ''; position: absolute; top: 0; left: 0; right: 0; height: 100px;
-  background: linear-gradient(to bottom, rgba(0,0,0,0.25), transparent);
+  content: ''; position: absolute; top: 0; left: 0; right: 0; height: 120px;
+  background: linear-gradient(180deg, rgba(0,0,0,0.3), transparent);
 }
 .cover-top-title {
-  position: absolute; top: 24px; left: 0; right: 0; z-index: 3;
+  position: absolute; top: 28px; left: 0; right: 0; z-index: 3;
   text-align: center; font-family: 'Noto Serif SC', serif;
-  font-size: 44px; font-weight: 900; color: #FDCE3C; line-height: 1.3;
-  text-shadow: 2px 2px 3px rgba(80,40,0,0.7), 0 0 6px rgba(100,50,0,0.4);
-  letter-spacing: 4px;
+  font-size: 46px; font-weight: 900; color: #FDCE3C; line-height: 1.3;
+  text-shadow: 2px 3px 6px rgba(60,30,0,0.8), 0 0 30px rgba(200,147,60,0.3);
+  letter-spacing: 6px;
 }
-.cover-emoji { font-size: 72px; margin-bottom: 24px; position: relative; z-index: 2; }
-.cover-title {
-  font-family: 'Noto Serif SC', serif; font-size: 60px; font-weight: 900;
-  color: #fff; text-align: center; line-height: 1.3;
-  position: relative; z-index: 2; text-shadow: 0 4px 20px rgba(0,0,0,0.3); letter-spacing: 4px;
+.cover-badge {
+  position: absolute; top: 145px; left: 50%; transform: translateX(-50%);
+  background: rgba(253,206,60,0.9); color: var(--earth);
+  padding: 8px 28px; border-radius: 24px;
+  font-size: 18px; font-weight: 700; letter-spacing: 3px;
+  z-index: 3; backdrop-filter: blur(4px);
+  box-shadow: 0 4px 20px rgba(200,147,60,0.4);
 }
 .cover-subtitle {
-  font-size: 22px; color: rgba(255,255,255,0.9); margin-top: 16px;
-  position: relative; z-index: 2; font-weight: 300; letter-spacing: 2px;
+  font-size: 20px; color: rgba(255,255,255,0.9); margin-bottom: 20px;
+  position: relative; z-index: 2; font-weight: 400; letter-spacing: 3px;
+  text-shadow: 0 2px 10px rgba(0,0,0,0.5);
 }
 .cover-tags {
-  display: flex; gap: 12px; margin-top: 28px; position: relative; z-index: 2;
+  display: flex; gap: 12px; margin-bottom: 20px; position: relative; z-index: 2;
   flex-wrap: wrap; justify-content: center; padding: 0 40px;
 }
 .cover-tag {
-  background: rgba(255,255,255,0.2); backdrop-filter: blur(10px);
-  border: 1px solid rgba(255,255,255,0.3); color: #fff;
-  padding: 8px 18px; border-radius: 20px; font-size: 14px; font-weight: 500;
+  background: rgba(255,255,255,0.12); backdrop-filter: blur(12px);
+  border: 1px solid rgba(255,255,255,0.25); color: #fff;
+  padding: 10px 20px; border-radius: 24px; font-size: 14px; font-weight: 500;
+  transition: all 0.3s ease;
 }
+.cover-tag:hover { background: rgba(255,255,255,0.2); transform: translateY(-2px); }
 .cover-info {
-  position: absolute; bottom: 40px; left: 0; right: 0; text-align: center;
-  color: rgba(255,255,255,0.8); font-size: 15px; z-index: 2; letter-spacing: 1px;
+  position: relative; z-index: 2; text-align: center;
+  color: rgba(255,255,255,0.75); font-size: 14px; letter-spacing: 1.5px;
+  font-family: 'DM Sans', sans-serif;
 }
 
-/* 内容卡片通用 */
+/* === Content Cards (New Design) === */
 .content-card {
-  width: 750px; background: var(--safari-cream);
-  border-radius: 12px; padding: 60px 50px; position: relative; overflow: hidden;
+  width: 750px;
+  background: var(--card-bg);
+  border-radius: 20px;
+  padding: 56px 48px;
+  position: relative; overflow: hidden;
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(200, 147, 60, 0.08);
+  box-shadow: var(--shadow-soft);
+  transition: box-shadow 0.4s ease;
 }
+.content-card:hover { box-shadow: var(--shadow-hover); }
 .content-card::before {
-  content: ''; position: absolute; top: 0; left: 0; right: 0; height: 5px;
-  background: linear-gradient(90deg, var(--safari-gold), var(--safari-orange), var(--safari-sunset));
+  content: ''; position: absolute; top: 0; left: 0; right: 0; height: 4px;
+  background: linear-gradient(90deg, var(--gold), var(--amber), var(--rust), var(--sage));
+  background-size: 300% 100%;
+  animation: shimmer 8s linear infinite;
 }
-.card-number {
-  position: absolute; top: 25px; right: 40px;
-  font-family: 'Noto Serif SC', serif; font-size: 90px; font-weight: 900;
-  color: rgba(212, 168, 83, 0.08); line-height: 1;
+@keyframes shimmer {
+  0% { background-position: 0% 50%; }
+  100% { background-position: 300% 50%; }
 }
-.section-header { display: flex; align-items: center; gap: 12px; margin-bottom: 28px; }
-.section-icon { font-size: 32px; }
-.section-title {
-  font-family: 'Noto Serif SC', serif; font-size: 30px; font-weight: 700;
-  color: var(--text-dark); letter-spacing: 2px;
-}
-.section-subtitle { font-size: 13px; color: var(--text-muted); margin-top: 2px; letter-spacing: 1px; }
 
-/* 信息项 */
-.info-grid { display: flex; flex-direction: column; gap: 14px; }
+/* Decorative corner elements */
+.content-card::after {
+  content: ''; position: absolute; top: 20px; right: 20px;
+  width: 60px; height: 60px;
+  border-top: 2px solid rgba(200, 147, 60, 0.15);
+  border-right: 2px solid rgba(200, 147, 60, 0.15);
+  border-radius: 0 8px 0 0;
+}
+
+.card-number {
+  position: absolute; top: 20px; right: 36px;
+  font-family: 'Playfair Display', serif; font-size: 100px; font-weight: 900;
+  color: rgba(200, 147, 60, 0.06); line-height: 1;
+  letter-spacing: -4px;
+}
+
+.section-header {
+  display: flex; align-items: center; gap: 16px; margin-bottom: 32px;
+  position: relative;
+}
+.section-icon {
+  width: 52px; height: 52px;
+  background: linear-gradient(135deg, var(--gold), var(--amber));
+  border-radius: 14px; display: flex; align-items: center; justify-content: center;
+  font-size: 26px; box-shadow: 0 4px 15px rgba(200, 147, 60, 0.3);
+}
+.section-title {
+  font-family: 'Noto Serif SC', serif; font-size: 28px; font-weight: 700;
+  color: var(--earth); letter-spacing: 2px;
+  background: linear-gradient(135deg, var(--earth), var(--rust));
+  -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+.section-subtitle {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 11px; color: var(--gold); margin-top: 4px;
+  letter-spacing: 3px; text-transform: uppercase; font-weight: 500;
+}
+
+/* === Info Items === */
+.info-grid { display: flex; flex-direction: column; gap: 16px; }
 .info-item {
-  background: #fff; border-radius: 14px; padding: 22px 26px;
-  box-shadow: var(--card-shadow); border-left: 4px solid var(--safari-gold);
+  background: #fff; border-radius: 16px; padding: 24px 28px;
+  box-shadow: 0 2px 12px rgba(0,0,0,0.04);
+  border: 1px solid rgba(200, 147, 60, 0.1);
+  position: relative; overflow: hidden;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+.info-item:hover { transform: translateY(-2px); box-shadow: 0 8px 25px rgba(0,0,0,0.08); }
+.info-item::before {
+  content: ''; position: absolute; left: 0; top: 0; bottom: 0; width: 4px;
+  background: linear-gradient(180deg, var(--gold), var(--amber));
+  border-radius: 0 4px 4px 0;
 }
 .info-label {
-  font-size: 12px; color: var(--text-muted); font-weight: 500;
-  text-transform: uppercase; letter-spacing: 2px; margin-bottom: 6px;
+  font-family: 'DM Sans', sans-serif;
+  font-size: 11px; color: var(--gold); font-weight: 600;
+  text-transform: uppercase; letter-spacing: 2.5px; margin-bottom: 8px;
 }
-.info-value { font-size: 15px; color: var(--text-dark); font-weight: 500; line-height: 1.8; }
-.info-value .hl { color: var(--safari-orange); font-weight: 700; }
-.info-value .sm { font-size: 13px; color: var(--text-muted); }
+.info-value { font-size: 14.5px; color: var(--earth); font-weight: 400; line-height: 1.9; }
+.info-value .hl { color: var(--amber); font-weight: 700; }
+.info-value .sm { font-size: 13px; color: #8B7355; }
 
-/* 费用 */
+/* === Cost Section === */
 .cost-total {
-  text-align: center; padding: 28px; background: linear-gradient(135deg, #fff9f0, #fff3e6);
-  border-radius: 18px; margin-bottom: 20px; border: 2px solid var(--safari-gold);
+  text-align: center; padding: 36px;
+  background: linear-gradient(135deg, #FFF9EF, #FFF3E0);
+  border-radius: 20px; margin-bottom: 24px;
+  border: 2px solid var(--gold-light);
+  position: relative; overflow: hidden;
 }
-.cost-total-label { font-size: 14px; color: var(--text-muted); margin-bottom: 6px; }
+.cost-total::before {
+  content: ''; position: absolute; inset: 0;
+  background: radial-gradient(circle at 30% 50%, rgba(200,147,60,0.08), transparent 60%);
+}
+.cost-total-label { font-size: 13px; color: #8B7355; margin-bottom: 8px; letter-spacing: 1px; }
 .cost-total-value {
-  font-family: 'Noto Serif SC', serif; font-size: 44px; font-weight: 900; color: var(--safari-orange);
+  font-family: 'Playfair Display', serif; font-size: 52px; font-weight: 900;
+  color: var(--amber); position: relative;
 }
-.cost-total-value .unit { font-size: 18px; font-weight: 400; }
-.cost-breakdown { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+.cost-total-value .unit { font-size: 18px; font-weight: 400; color: #8B7355; }
+.cost-breakdown { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
 .cost-item {
-  background: #fff; border-radius: 12px; padding: 16px; box-shadow: var(--card-shadow); text-align: center;
+  background: #fff; border-radius: 16px; padding: 20px 16px;
+  box-shadow: 0 2px 12px rgba(0,0,0,0.04); text-align: center;
+  border: 1px solid rgba(200, 147, 60, 0.08);
+  transition: transform 0.3s ease;
 }
-.cost-item-icon { font-size: 26px; margin-bottom: 6px; }
-.cost-item-label { font-size: 11px; color: var(--text-muted); margin-bottom: 4px; }
-.cost-item-value { font-size: 16px; font-weight: 700; color: var(--text-dark); }
+.cost-item:hover { transform: translateY(-3px); }
+.cost-item-icon { font-size: 28px; margin-bottom: 8px; }
+.cost-item-label { font-size: 11px; color: #8B7355; margin-bottom: 6px; letter-spacing: 0.5px; }
+.cost-item-value { font-family: 'Playfair Display', serif; font-size: 17px; font-weight: 700; color: var(--earth); }
 .money-box {
-  background: linear-gradient(135deg, #FFF9E6, #FFF3CC);
-  border: 2px solid var(--safari-gold); border-radius: 14px; padding: 22px; margin-top: 20px;
+  background: linear-gradient(135deg, #FFFBF0, #FFF7E6);
+  border: 1.5px solid var(--gold-light); border-radius: 16px;
+  padding: 24px 28px; margin-top: 20px;
+  position: relative; overflow: hidden;
 }
-.money-box b { color: var(--safari-orange); }
-.money-title { font-size: 15px; font-weight: 700; color: var(--safari-earth); margin-bottom: 10px; }
-.money-list { font-size: 13px; color: var(--text-body); line-height: 2.2; }
+.money-box::before {
+  content: ''; position: absolute; top: -20px; right: -20px;
+  width: 80px; height: 80px; border-radius: 50%;
+  background: radial-gradient(circle, rgba(200,147,60,0.1), transparent);
+}
+.money-box b { color: var(--amber); }
+.money-title {
+  font-size: 15px; font-weight: 700; color: var(--earth); margin-bottom: 12px;
+  letter-spacing: 0.5px;
+}
+.money-list { font-size: 13px; color: #4A3728; line-height: 2.2; }
 
-/* 路线 */
+/* === Route Flow === */
 .route-flow {
-  display: flex; flex-wrap: wrap; align-items: center; gap: 8px;
-  margin: 16px 0 24px; padding: 22px; background: #fff; border-radius: 14px; box-shadow: var(--card-shadow);
+  display: flex; flex-wrap: wrap; align-items: center; gap: 10px;
+  margin: 16px 0 28px; padding: 24px;
+  background: linear-gradient(135deg, #fff, #FFF9F0);
+  border-radius: 16px; box-shadow: 0 4px 20px rgba(0,0,0,0.04);
+  border: 1px solid rgba(200, 147, 60, 0.1);
 }
 .route-spot {
-  background: linear-gradient(135deg, var(--safari-gold), var(--safari-orange));
-  color: #fff; padding: 8px 14px; border-radius: 18px; font-size: 13px; font-weight: 500;
+  background: linear-gradient(135deg, var(--gold), var(--amber));
+  color: #fff; padding: 9px 16px; border-radius: 20px;
+  font-size: 13px; font-weight: 600; letter-spacing: 0.5px;
+  box-shadow: 0 3px 10px rgba(200, 147, 60, 0.3);
+  transition: transform 0.2s ease;
 }
-.route-arrow { color: var(--safari-gold); font-size: 16px; font-weight: 700; }
+.route-spot:hover { transform: scale(1.05); }
+.route-arrow { color: var(--gold); font-size: 16px; font-weight: 700; opacity: 0.6; }
 
-/* 时间线 */
-.timeline { position: relative; padding-left: 28px; }
+/* === Timeline === */
+.timeline { position: relative; padding-left: 32px; }
 .timeline::before {
-  content: ''; position: absolute; left: 7px; top: 0; bottom: 0; width: 3px;
-  background: linear-gradient(180deg, var(--safari-gold), var(--safari-orange), var(--safari-green));
-  border-radius: 2px;
+  content: ''; position: absolute; left: 8px; top: 0; bottom: 0; width: 3px;
+  background: linear-gradient(180deg, var(--gold), var(--amber), var(--sage), var(--gold));
+  border-radius: 4px;
 }
 .timeline-item {
-  position: relative; margin-bottom: 20px; padding: 18px 22px;
-  background: #fff; border-radius: 14px; box-shadow: var(--card-shadow);
+  position: relative; margin-bottom: 20px; padding: 22px 26px;
+  background: #fff; border-radius: 16px;
+  box-shadow: 0 2px 15px rgba(0,0,0,0.04);
+  border: 1px solid rgba(200, 147, 60, 0.08);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+.timeline-item:hover {
+  transform: translateX(4px);
+  box-shadow: 0 8px 30px rgba(0,0,0,0.08);
 }
 .timeline-item::before {
-  content: ''; position: absolute; left: -25px; top: 22px;
-  width: 12px; height: 12px; background: var(--safari-orange);
-  border-radius: 50%; border: 3px solid var(--safari-cream); box-shadow: 0 0 0 2px var(--safari-orange);
+  content: ''; position: absolute; left: -28px; top: 24px;
+  width: 14px; height: 14px;
+  background: linear-gradient(135deg, var(--gold), var(--amber));
+  border-radius: 50%; border: 3px solid var(--sand);
+  box-shadow: 0 0 0 2px var(--gold), 0 0 10px rgba(200,147,60,0.3);
 }
 .timeline-day {
   display: inline-block;
-  background: linear-gradient(135deg, var(--safari-gold), var(--safari-orange));
-  color: #fff; padding: 3px 12px; border-radius: 10px; font-size: 12px; font-weight: 700; margin-bottom: 8px;
+  background: linear-gradient(135deg, var(--gold), var(--amber));
+  color: #fff; padding: 4px 14px; border-radius: 10px;
+  font-size: 12px; font-weight: 700; margin-bottom: 10px;
+  letter-spacing: 0.5px;
 }
-.timeline-date { font-size: 12px; color: var(--text-muted); margin-left: 8px; }
+.timeline-date { font-family: 'DM Sans', sans-serif; font-size: 12px; color: #8B7355; margin-left: 10px; }
 .timeline-title {
-  font-family: 'Noto Serif SC', serif; font-size: 16px; font-weight: 700; color: var(--text-dark); margin-bottom: 6px;
+  font-family: 'Noto Serif SC', serif; font-size: 17px; font-weight: 700;
+  color: var(--earth); margin-bottom: 8px; letter-spacing: 0.5px;
 }
-.timeline-desc { font-size: 13px; color: var(--text-body); line-height: 1.8; }
-.timeline-highlights { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 8px; }
+.timeline-desc { font-size: 13px; color: #4A3728; line-height: 1.9; }
+.timeline-highlights { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 12px; }
 .timeline-hl {
-  background: rgba(74, 124, 89, 0.1); color: var(--safari-green);
-  padding: 3px 10px; border-radius: 8px; font-size: 11px; font-weight: 500;
+  background: linear-gradient(135deg, rgba(91, 123, 94, 0.08), rgba(91, 123, 94, 0.15));
+  color: var(--sage); border: 1px solid rgba(91, 123, 94, 0.2);
+  padding: 5px 12px; border-radius: 10px; font-size: 11px; font-weight: 600;
+  letter-spacing: 0.3px;
 }
 .hotel-info {
-  margin-top: 10px; padding: 10px 14px; border-radius: 10px;
-  background: #FFF9F0; border: 1px dashed rgba(212, 168, 83, 0.5);
+  margin-top: 14px; padding: 12px 16px; border-radius: 12px;
+  background: linear-gradient(135deg, #FFF9EF, #FFFBF5);
+  border: 1px solid rgba(200, 147, 60, 0.2);
 }
-.hotel-name { font-size: 12px; font-weight: 700; color: var(--safari-brown); }
-.hotel-desc { font-size: 11px; color: var(--text-muted); margin-top: 3px; }
+.hotel-name { font-size: 12px; font-weight: 700; color: var(--earth); letter-spacing: 0.3px; }
+.hotel-desc { font-size: 11px; color: #8B7355; margin-top: 4px; line-height: 1.6; }
 
-/* 动物 */
-.animal-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; margin: 16px 0; }
+/* === Animals === */
+.animal-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; margin: 20px 0; }
 .animal-item {
-  background: #fff; border-radius: 12px; padding: 16px 10px; text-align: center; box-shadow: var(--card-shadow);
+  background: #fff; border-radius: 16px; padding: 20px 12px; text-align: center;
+  box-shadow: 0 2px 12px rgba(0,0,0,0.04);
+  border: 1px solid rgba(200, 147, 60, 0.08);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  cursor: default;
 }
-.animal-emoji { font-size: 32px; margin-bottom: 6px; }
-.animal-name { font-size: 12px; font-weight: 700; color: var(--text-dark); }
-.animal-spot { font-size: 10px; color: var(--text-muted); margin-top: 3px; }
+.animal-item:hover {
+  transform: translateY(-4px) scale(1.02);
+  box-shadow: 0 12px 30px rgba(0,0,0,0.1);
+}
+.animal-emoji { font-size: 36px; margin-bottom: 8px; }
+.animal-name { font-size: 13px; font-weight: 700; color: var(--earth); }
+.animal-spot { font-size: 10px; color: #8B7355; margin-top: 4px; }
 
-/* 清单 */
-.checklist-category { margin-bottom: 20px; }
-.checklist-title { font-size: 15px; font-weight: 700; color: var(--safari-brown); margin-bottom: 10px; }
+/* === Checklist === */
+.checklist-category { margin-bottom: 24px; }
+.checklist-title {
+  font-size: 15px; font-weight: 700; color: var(--earth); margin-bottom: 12px;
+  padding-bottom: 8px; border-bottom: 2px solid rgba(200, 147, 60, 0.1);
+}
 .checklist-items { display: flex; flex-wrap: wrap; gap: 8px; }
 .checklist-item {
-  background: #fff; border: 1px solid rgba(212, 168, 83, 0.3);
-  padding: 6px 14px; border-radius: 18px; font-size: 12px; color: var(--text-body);
+  background: #fff; border: 1px solid rgba(200, 147, 60, 0.15);
+  padding: 8px 16px; border-radius: 20px; font-size: 12px; color: #4A3728;
+  transition: all 0.2s ease;
 }
-.checklist-item::before { content: '☐ '; color: var(--safari-gold); }
+.checklist-item:hover { background: var(--gold-light); color: #fff; border-color: var(--gold); }
+.checklist-item::before { content: '○ '; color: var(--gold); font-weight: 700; }
 
-/* Tips */
+/* === Tips === */
 .tip-card {
-  background: #fff; border-radius: 14px; padding: 18px 22px; margin-bottom: 12px;
-  box-shadow: var(--card-shadow); border-left: 4px solid var(--safari-sunset);
+  background: #fff; border-radius: 16px; padding: 22px 26px; margin-bottom: 14px;
+  box-shadow: 0 2px 12px rgba(0,0,0,0.04);
+  border: 1px solid rgba(200, 147, 60, 0.08);
+  border-left: 4px solid var(--amber);
+  transition: transform 0.2s ease;
 }
-.tip-card.warning { border-left-color: #E74C3C; background: #FFF5F5; }
-.tip-card.green { border-left-color: var(--safari-green); background: #F5FFF8; }
-.tip-title { font-size: 14px; font-weight: 700; color: var(--text-dark); margin-bottom: 4px; }
-.tip-text { font-size: 12px; color: var(--text-body); line-height: 1.8; }
+.tip-card:hover { transform: translateX(3px); }
+.tip-card.warning { border-left-color: #D94848; background: #FFFAFA; }
+.tip-card.green { border-left-color: var(--sage); background: #F8FFF9; }
+.tip-title { font-size: 14px; font-weight: 700; color: var(--earth); margin-bottom: 8px; }
+.tip-text { font-size: 12.5px; color: #4A3728; line-height: 1.9; }
 
-/* 签证 */
+/* === Visa Steps === */
 .visa-step {
-  display: flex; align-items: flex-start; gap: 14px;
-  background: #fff; border-radius: 14px; padding: 20px 22px; margin-bottom: 12px; box-shadow: var(--card-shadow);
+  display: flex; align-items: flex-start; gap: 16px;
+  background: #fff; border-radius: 16px; padding: 24px 26px; margin-bottom: 14px;
+  box-shadow: 0 2px 12px rgba(0,0,0,0.04);
+  border: 1px solid rgba(200, 147, 60, 0.08);
+  transition: transform 0.3s ease;
 }
+.visa-step:hover { transform: translateX(4px); }
 .visa-step-num {
-  width: 32px; height: 32px;
-  background: linear-gradient(135deg, var(--safari-gold), var(--safari-orange));
+  width: 36px; height: 36px;
+  background: linear-gradient(135deg, var(--gold), var(--amber));
   border-radius: 50%; display: flex; align-items: center; justify-content: center;
-  color: #fff; font-weight: 700; font-size: 14px; flex-shrink: 0;
+  color: #fff; font-family: 'Playfair Display', serif;
+  font-weight: 700; font-size: 16px; flex-shrink: 0;
+  box-shadow: 0 4px 12px rgba(200, 147, 60, 0.3);
 }
-.visa-step-title { font-size: 15px; font-weight: 700; color: var(--text-dark); margin-bottom: 4px; }
-.visa-step-desc { font-size: 12px; color: var(--text-body); line-height: 1.8; }
+.visa-step-title { font-size: 15px; font-weight: 700; color: var(--earth); margin-bottom: 8px; }
+.visa-step-desc { font-size: 12.5px; color: #4A3728; line-height: 1.9; }
 
-/* 酒店详情 */
+/* === Hotel Detail === */
 .hotel-detail-card {
-  background: #fff; border-radius: 14px; padding: 22px; margin-bottom: 16px;
-  box-shadow: var(--card-shadow); border: 1px solid rgba(212, 168, 83, 0.2);
+  background: #fff; border-radius: 18px; padding: 26px 28px; margin-bottom: 18px;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.05);
+  border: 1px solid rgba(200, 147, 60, 0.1);
   position: relative; overflow: hidden;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+.hotel-detail-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 12px 40px rgba(0,0,0,0.1);
 }
 .hotel-detail-card::before {
-  content: ''; position: absolute; top: 0; left: 0; width: 4px; height: 100%;
-  background: linear-gradient(180deg, var(--safari-gold), var(--safari-orange));
+  content: ''; position: absolute; top: 0; left: 0; width: 5px; height: 100%;
+  background: linear-gradient(180deg, var(--gold), var(--amber), var(--sage));
 }
-.hotel-detail-header {
-  display: flex; align-items: center; gap: 10px; margin-bottom: 10px;
-}
+.hotel-detail-header { display: flex; align-items: center; gap: 12px; margin-bottom: 12px; }
 .hotel-detail-tag {
-  background: linear-gradient(135deg, var(--safari-gold), var(--safari-orange));
-  color: #fff; padding: 3px 10px; border-radius: 8px; font-size: 11px; font-weight: 700;
+  background: linear-gradient(135deg, var(--gold), var(--amber));
+  color: #fff; padding: 4px 12px; border-radius: 10px;
+  font-size: 11px; font-weight: 700; letter-spacing: 0.3px;
 }
-.hotel-detail-location { font-size: 12px; color: var(--text-muted); }
+.hotel-detail-location { font-size: 12px; color: #8B7355; }
 .hotel-detail-name {
-  font-family: 'Noto Serif SC', serif; font-size: 16px; font-weight: 700;
-  color: var(--text-dark); margin-bottom: 2px;
+  font-family: 'Playfair Display', serif; font-size: 18px; font-weight: 700;
+  color: var(--earth); margin-bottom: 3px;
 }
-.hotel-detail-name-cn { font-size: 13px; color: var(--text-muted); margin-bottom: 10px; }
-.hotel-detail-desc { font-size: 13px; color: var(--text-body); line-height: 1.8; margin-bottom: 12px; }
-.hotel-detail-highlights { display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 10px; }
+.hotel-detail-name-cn { font-size: 13px; color: #8B7355; margin-bottom: 12px; }
+.hotel-detail-desc { font-size: 13px; color: #4A3728; line-height: 1.9; margin-bottom: 14px; }
+.hotel-detail-highlights { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 14px; }
 .hotel-detail-hl {
-  background: rgba(74, 124, 89, 0.1); color: var(--safari-green);
-  padding: 4px 10px; border-radius: 8px; font-size: 11px; font-weight: 500;
+  background: linear-gradient(135deg, rgba(91, 123, 94, 0.06), rgba(91, 123, 94, 0.12));
+  color: var(--sage); border: 1px solid rgba(91, 123, 94, 0.15);
+  padding: 5px 12px; border-radius: 10px; font-size: 11px; font-weight: 600;
 }
 .hotel-detail-tip {
-  font-size: 12px; color: var(--safari-orange); font-weight: 500;
-  padding: 8px 12px; background: #FFF9F0; border-radius: 8px;
-  border: 1px dashed rgba(212, 168, 83, 0.4);
+  font-size: 12px; color: var(--amber); font-weight: 600;
+  padding: 10px 14px; background: linear-gradient(135deg, #FFF9EF, #FFFBF5);
+  border-radius: 10px; border: 1px solid rgba(200, 147, 60, 0.2);
 }
 
-/* 安全 */
+/* === Emergency === */
 .emergency-box {
-  background: linear-gradient(135deg, #FFF5F5, #FFE8E8); border: 2px solid #E74C3C;
-  border-radius: 14px; padding: 22px; margin-bottom: 16px; text-align: center;
+  background: linear-gradient(135deg, #FFF5F5, #FFE8E8);
+  border: 2px solid #D94848; border-radius: 18px;
+  padding: 28px; margin-bottom: 18px; text-align: center;
+  position: relative; overflow: hidden;
 }
-.emergency-title { font-size: 14px; font-weight: 700; color: #C0392B; margin-bottom: 8px; }
-.emergency-number { font-size: 22px; font-weight: 900; color: #E74C3C; font-family: 'Noto Serif SC', serif; }
-.emergency-desc { font-size: 12px; color: #8B4513; margin-top: 6px; }
+.emergency-box::before {
+  content: ''; position: absolute; inset: 0;
+  background: radial-gradient(circle at 50% 50%, rgba(217,72,72,0.05), transparent 70%);
+}
+.emergency-title { font-size: 14px; font-weight: 700; color: #C0392B; margin-bottom: 10px; }
+.emergency-number {
+  font-family: 'Playfair Display', serif;
+  font-size: 22px; font-weight: 900; color: #D94848;
+}
+.emergency-desc { font-size: 12px; color: #8B4513; margin-top: 8px; }
 
-/* 尾页 */
+/* === Footer === */
 .footer-card {
   width: 750px; height: 500px;
-  background: linear-gradient(180deg, #2D1B0E 0%, #5C3D2E 50%, #8B6914 100%);
-  border-radius: 12px; display: flex; flex-direction: column;
-  align-items: center; justify-content: center; position: relative; overflow: hidden;
+  background: linear-gradient(160deg, #1A0F08 0%, #2D1B0E 30%, #5C3D2E 60%, #8B6914 100%);
+  border-radius: 20px; display: flex; flex-direction: column;
+  align-items: center; justify-content: center;
+  position: relative; overflow: hidden;
 }
 .footer-card::before {
-  content: ''; position: absolute; top: 40px; left: 50%; transform: translateX(-50%);
-  width: 80px; height: 80px; background: radial-gradient(circle, #F7A941 0%, transparent 70%);
-  border-radius: 50%; opacity: 0.4;
+  content: ''; position: absolute; top: 30%; left: 50%; transform: translate(-50%, -50%);
+  width: 200px; height: 200px;
+  background: radial-gradient(circle, rgba(200,147,60,0.2) 0%, transparent 60%);
+  border-radius: 50%;
+  animation: pulse 4s ease-in-out infinite;
+}
+@keyframes pulse {
+  0%, 100% { transform: translate(-50%, -50%) scale(1); opacity: 0.6; }
+  50% { transform: translate(-50%, -50%) scale(1.3); opacity: 0.3; }
+}
+.footer-card::after {
+  content: ''; position: absolute; inset: 0;
+  background: radial-gradient(ellipse at 50% 80%, rgba(200,147,60,0.1), transparent 50%);
 }
 .footer-text {
-  font-family: 'Noto Serif SC', serif; font-size: 32px; font-weight: 700;
-  color: rgba(255,255,255,0.9); text-align: center; position: relative; z-index: 1; line-height: 1.6;
+  font-family: 'Noto Serif SC', serif; font-size: 34px; font-weight: 700;
+  color: rgba(255,255,255,0.92); text-align: center;
+  position: relative; z-index: 1; line-height: 1.7; letter-spacing: 2px;
 }
-.footer-sub { font-size: 14px; color: rgba(255,255,255,0.6); margin-top: 16px; position: relative; z-index: 1; }
+.footer-sub {
+  font-size: 14px; color: rgba(255,255,255,0.55); margin-top: 20px;
+  position: relative; z-index: 1; letter-spacing: 1px;
+}
 .footer-tags {
-  display: flex; gap: 10px; margin-top: 24px; position: relative; z-index: 1;
+  display: flex; gap: 12px; margin-top: 28px; position: relative; z-index: 1;
   flex-wrap: wrap; justify-content: center;
 }
-.footer-tag { color: rgba(255,255,255,0.6); font-size: 12px; }
+.footer-tag {
+  color: rgba(255,255,255,0.45); font-size: 12px;
+  font-family: 'DM Sans', sans-serif; letter-spacing: 0.5px;
+}
+
+/* === Scroll Animation === */
+.reveal {
+  opacity: 0; transform: translateY(30px);
+  transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1), transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.reveal.visible { opacity: 1; transform: translateY(0); }
 </style>
 </head>
 <body>
+<div class="bg-grain"></div>
 <div class="page-container">
 
 <!-- ===== 封面 ===== -->
 <div class="cover-card">
   <div class="cover-top-title">肯尼亚Safari<br>保姆级攻略</div>
+  <div class="cover-badge">9天7晚 旅行攻略</div>
   <div class="cover-subtitle">追逐非洲五霸的梦想之旅</div>
   <div class="cover-tags">
     <span class="cover-tag">🗓 端午节</span>
@@ -321,7 +502,7 @@ body {
 </div>
 
 <!-- ===== 基本信息 ===== -->
-<div class="content-card">
+<div class="content-card reveal">
   <div class="card-number">01</div>
   <div class="section-header">
     <span class="section-icon">📋</span>
@@ -349,7 +530,7 @@ body {
 </div>
 
 <!-- ===== 费用明细 ===== -->
-<div class="content-card">
+<div class="content-card reveal">
   <div class="card-number">02</div>
   <div class="section-header">
     <span class="section-icon">💰</span>
@@ -382,7 +563,7 @@ body {
 </div>
 
 <!-- ===== 路线+行程 ===== -->
-<div class="content-card">
+<div class="content-card reveal">
   <div class="card-number">03</div>
   <div class="section-header">
     <span class="section-icon">🗺️</span>
@@ -392,21 +573,14 @@ body {
     </div>
   </div>
   <div class="route-flow">
-    <span class="route-spot">✈️ 北京</span>
-    <span class="route-arrow">→</span>
-    <span class="route-spot">🏙️ 内罗毕</span>
-    <span class="route-arrow">→</span>
-    <span class="route-spot">🐘 安博塞利</span>
-    <span class="route-arrow">→</span>
-    <span class="route-spot">🦛 奈瓦沙湖</span>
-    <span class="route-arrow">→</span>
-    <span class="route-spot">🦩 纳库鲁湖</span>
-    <span class="route-arrow">→</span>
-    <span class="route-spot">🦁 马赛马拉</span>
-    <span class="route-arrow">→</span>
+    <span class="route-spot">✈️ 北京</span><span class="route-arrow">→</span>
+    <span class="route-spot">🏙️ 内罗毕</span><span class="route-arrow">→</span>
+    <span class="route-spot">🐘 安博塞利</span><span class="route-arrow">→</span>
+    <span class="route-spot">🦛 奈瓦沙湖</span><span class="route-arrow">→</span>
+    <span class="route-spot">🦩 纳库鲁湖</span><span class="route-arrow">→</span>
+    <span class="route-spot">🦁 马赛马拉</span><span class="route-arrow">→</span>
     <span class="route-spot">✈️ 回京</span>
   </div>
-
   <div class="timeline">
     <div class="timeline-item">
       <span class="timeline-day">Day 0-1</span><span class="timeline-date">5.31-6.1</span>
@@ -422,18 +596,16 @@ body {
         <div class="hotel-desc">游泳池+自助餐 | 直面乞力马扎罗山 | 坐拥安博塞利最佳象群观赏地</div>
       </div>
     </div>
-
     <div class="timeline-item">
       <span class="timeline-day">Day 2</span><span class="timeline-date">6.2</span>
-<div class="timeline-title">安博塞利 · 全天游猎</div>
-<div class="timeline-desc">清晨7:30出发追踪动物，上午黄金观赏时段拍摄大象、猴子等与乞力马扎罗山同框，下午继续探索沼泽地带。</div>
+      <div class="timeline-title">安博塞利 · 全天游猎</div>
+      <div class="timeline-desc">清晨7:30出发追踪动物，上午黄金观赏时段拍摄大象、猴子等与乞力马扎罗山同框，下午继续探索沼泽地带。</div>
       <div class="timeline-highlights">
         <span class="timeline-hl">📷 最佳拍摄</span>
         <span class="timeline-hl">🦒 长颈鹿</span>
         <span class="timeline-hl">🦅 420种鸟类</span>
       </div>
     </div>
-
     <div class="timeline-item">
       <span class="timeline-day">Day 3</span><span class="timeline-date">6.3</span>
       <div class="timeline-title">奈瓦沙湖 · 游船+新月岛徒步</div>
@@ -448,7 +620,6 @@ body {
         <div class="hotel-desc">毗邻奈瓦沙湖 | 斑马、长颈鹿等动物自由穿行园区 | 全程最佳酒店</div>
       </div>
     </div>
-
     <div class="timeline-item">
       <span class="timeline-day">Day 4</span><span class="timeline-date">6.4</span>
       <div class="timeline-title">埃尔门泰塔湖 + 纳库鲁湖</div>
@@ -463,7 +634,6 @@ body {
         <div class="hotel-desc">坐落于狮子山丘之上 | 灌木丛风格 | 记得带驱蚊水</div>
       </div>
     </div>
-
     <div class="timeline-item">
       <span class="timeline-day">Day 5-7</span><span class="timeline-date">6.5-6.7</span>
       <div class="timeline-title">马赛马拉 · 三天深度游猎</div>
@@ -479,7 +649,6 @@ body {
         <div class="hotel-desc">时尚游猎帐篷 | 该地区最佳餐饮之一 | 绝佳观景酒吧</div>
       </div>
     </div>
-
     <div class="timeline-item">
       <span class="timeline-day">Day 8-9</span><span class="timeline-date">6.8-6.9</span>
       <div class="timeline-title">马赛马拉 → 内罗毕 → 北京</div>
@@ -493,7 +662,7 @@ body {
 </div>
 
 <!-- ===== 机票购买Tips ===== -->
-<div class="content-card">
+<div class="content-card reveal">
   <div class="card-number">04</div>
   <div class="section-header">
     <span class="section-icon">✈️</span>
@@ -502,8 +671,7 @@ body {
       <div class="section-subtitle">FLIGHT BOOKING TIPS</div>
     </div>
   </div>
-
-  <div class="money-box" style="border-left: 3px solid #ff6b6b;">
+  <div class="money-box" style="border-left: 3px solid var(--rust);">
     <div class="money-title">🔍 购票渠道推荐</div>
     <div class="money-list">
       🔹 <b>淘宝飞猪官方旗舰店</b>：经常有国内飞内罗毕的卡次（兑换券），可提前购买囤着，价格比直接买便宜不少<br>
@@ -511,8 +679,7 @@ body {
       🔹 <b>建议提前3-4个月关注价格</b>，对比多个平台后再下手
     </div>
   </div>
-
-  <div class="money-box" style="border-left: 3px solid #ff6b6b;">
+  <div class="money-box" style="border-left: 3px solid var(--rust); margin-top: 14px;">
     <div class="money-title">🛫 我的航班实录</div>
     <div class="money-list">
       🔹 去程：5.31 周六 15:30 北京起飞 → 6.1 抵达内罗毕（经停/转机，全程约18h+）<br>
@@ -524,7 +691,7 @@ body {
 </div>
 
 <!-- ===== 地接社选择 ===== -->
-<div class="content-card">
+<div class="content-card reveal">
   <div class="card-number">05</div>
   <div class="section-header">
     <span class="section-icon">🤝</span>
@@ -533,8 +700,7 @@ body {
       <div class="section-subtitle">HOW TO FIND A LOCAL OPERATOR</div>
     </div>
   </div>
-
-  <div class="money-box" style="border-left: 3px solid #4CAF50;">
+  <div class="money-box" style="border-left: 3px solid var(--sage);">
     <div class="money-title">🔍 找地接社渠道</div>
     <div class="money-list">
       🔹 <b>SafariBookings.com</b>（推荐！）：全球最大Safari预订平台，可按评分、价格、行程筛选，有大量真实用户评价<br>
@@ -544,8 +710,7 @@ body {
       🔹 <b>朋友推荐</b>：最靠谱的渠道，去过的朋友口碑最真实
     </div>
   </div>
-
-  <div class="money-box" style="border-left: 3px solid #2196F3;">
+  <div class="money-box" style="border-left: 3px solid var(--sky); margin-top: 14px;">
     <div class="money-title">💡 选择技巧与注意事项</div>
     <div class="money-list">
       🔹 <b>看评价数量和评分</b>：SafariBookings上至少50+评价、4.5分以上的比较靠谱<br>
@@ -557,8 +722,7 @@ body {
       🔹 <b>要求签正式合同</b>：明确行程、酒店标准、取消政策，保留书面记录
     </div>
   </div>
-
-  <div class="money-box" style="border-left: 3px solid #4CAF50;">
+  <div class="money-box" style="border-left: 3px solid var(--sage); margin-top: 14px;">
     <div class="money-title">✅ 我的选择：Journey beyond Africa（JBA地接社）</div>
     <div class="money-list">
       🔹 <b>专属向导</b>：Peter（经验丰富，中英文沟通无障碍）<br>
@@ -570,7 +734,7 @@ body {
 </div>
 
 <!-- ===== 酒店介绍 ===== -->
-<div class="content-card">
+<div class="content-card reveal">
   <div class="card-number">06</div>
   <div class="section-header">
     <span class="section-icon">🏨</span>
@@ -579,20 +743,13 @@ body {
       <div class="section-subtitle">ACCOMMODATION GUIDE</div>
     </div>
   </div>
-  <p style="font-size:14px;color:var(--text-body);line-height:1.8;margin-bottom:20px;">
-    全程住宿均由地接社安排，含三餐，以下是各站酒店详细介绍 👇
-  </p>
+  <p style="font-size:14px;color:#4A3728;line-height:1.8;margin-bottom:22px;">全程住宿均由地接社安排，含三餐，以下是各站酒店详细介绍 👇</p>
 
   <div class="hotel-detail-card">
-    <div class="hotel-detail-header">
-      <span class="hotel-detail-tag">Day 1-2</span>
-      <span class="hotel-detail-location">📍 安博塞利国家公园</span>
-    </div>
+    <div class="hotel-detail-header"><span class="hotel-detail-tag">Day 1-2</span><span class="hotel-detail-location">📍 安博塞利国家公园</span></div>
     <div class="hotel-detail-name">Amboseli Serena Safari Lodge</div>
     <div class="hotel-detail-name-cn">安博塞利塞雷娜酒店</div>
-    <div class="hotel-detail-desc">
-      安博塞利国家公园内的标志性野奢度假村，以乞力马扎罗雪山为背景，可近距离观赏大象群落
-    </div>
+    <div class="hotel-detail-desc">安博塞利国家公园内的标志性野奢度假村，以乞力马扎罗雪山为背景，可近距离观赏大象群落</div>
     <div class="hotel-detail-highlights">
       <span class="hotel-detail-hl">🏕️ 非洲传统茅草风格客房，融入马赛文化元素</span>
       <span class="hotel-detail-hl">🐘 坐拥安博塞利最佳象群观赏地</span>
@@ -604,15 +761,10 @@ body {
   </div>
 
   <div class="hotel-detail-card">
-    <div class="hotel-detail-header">
-      <span class="hotel-detail-tag">Day 3</span>
-      <span class="hotel-detail-location">📍 奈瓦沙湖</span>
-    </div>
+    <div class="hotel-detail-header"><span class="hotel-detail-tag">Day 3</span><span class="hotel-detail-location">📍 奈瓦沙湖</span></div>
     <div class="hotel-detail-name">Naivasha Sopa Resort</div>
     <div class="hotel-detail-name-cn">奈瓦沙索帕度假村（长颈鹿酒店）</div>
-    <div class="hotel-detail-desc">
-      肯尼亚奈瓦沙湖畔的生态度假村，人与野生动物零距离共处。
-    </div>
+    <div class="hotel-detail-desc">肯尼亚奈瓦沙湖畔的生态度假村，人与野生动物零距离共处。</div>
     <div class="hotel-detail-highlights">
       <span class="hotel-detail-hl">🏡 非洲风情小屋散布于广阔绿地</span>
       <span class="hotel-detail-hl">🌊 毗邻奈瓦沙湖，可游船观鸟</span>
@@ -625,15 +777,10 @@ body {
   </div>
 
   <div class="hotel-detail-card">
-    <div class="hotel-detail-header">
-      <span class="hotel-detail-tag">Day 4</span>
-      <span class="hotel-detail-location">📍 纳库鲁湖</span>
-    </div>
+    <div class="hotel-detail-header"><span class="hotel-detail-tag">Day 4</span><span class="hotel-detail-location">📍 纳库鲁湖</span></div>
     <div class="hotel-detail-name">Sarova Lion Hill Game Lodge</div>
     <div class="hotel-detail-name-cn">萨罗瓦狮子山狩猎小屋</div>
-    <div class="hotel-detail-desc">
-      纳库鲁湖国家公园内的高端游猎酒店，坐拥裂谷湖景全景。
-    </div>
+    <div class="hotel-detail-desc">纳库鲁湖国家公园内的高端游猎酒店，坐拥裂谷湖景全景。</div>
     <div class="hotel-detail-highlights">
       <span class="hotel-detail-hl">🏔 建于山丘高处，俯瞰纳库鲁湖全景</span>
       <span class="hotel-detail-hl">🏡 石砌小屋掩映在丛林之中，非洲田园风情</span>
@@ -646,15 +793,10 @@ body {
   </div>
 
   <div class="hotel-detail-card">
-    <div class="hotel-detail-header">
-      <span class="hotel-detail-tag">Day 5-7</span>
-      <span class="hotel-detail-location">📍 马赛马拉</span>
-    </div>
+    <div class="hotel-detail-header"><span class="hotel-detail-tag">Day 5-7</span><span class="hotel-detail-location">📍 马赛马拉</span></div>
     <div class="hotel-detail-name">Zebra Plains Mara Camp</div>
     <div class="hotel-detail-name-cn">斑马平原马赛营地（奢华帐篷）</div>
-    <div class="hotel-detail-desc">
-      马赛马拉核心私人保护区内的精品野奢帐篷营地，远离人群、独享原始草原。
-    </div>
+    <div class="hotel-detail-desc">马赛马拉核心私人保护区内的精品野奢帐篷营地，远离人群、独享原始草原。</div>
     <div class="hotel-detail-highlights">
       <span class="hotel-detail-hl">⛺ 仅8顶帐篷，私密性极高</span>
       <span class="hotel-detail-hl">🛏 帐篷内设独立卫浴、热水淋浴和四柱床</span>
@@ -668,7 +810,7 @@ body {
 </div>
 
 <!-- ===== 可以看到的动物 ===== -->
-<div class="content-card">
+<div class="content-card reveal">
   <div class="card-number">07</div>
   <div class="section-header">
     <span class="section-icon">🦁</span>
@@ -677,9 +819,7 @@ body {
       <div class="section-subtitle">WILDLIFE HIGHLIGHTS</div>
     </div>
   </div>
-  <p style="font-size:14px;color:var(--text-body);line-height:1.8;margin-bottom:16px;">
-    肯尼亚是野生动物的天堂，全程可能偶遇的明星动物们 👇
-  </p>
+  <p style="font-size:14px;color:#4A3728;line-height:1.8;margin-bottom:16px;">肯尼亚是野生动物的天堂，全程可能偶遇的明星动物们 👇</p>
   <div class="animal-grid">
     <div class="animal-item"><div class="animal-emoji">🐘</div><div class="animal-name">非洲象</div><div class="animal-spot">安博塞利·900+头</div></div>
     <div class="animal-item"><div class="animal-emoji">🦁</div><div class="animal-name">狮子</div><div class="animal-spot">马赛马拉</div></div>
@@ -696,21 +836,18 @@ body {
   </div>
   <div class="tip-card green" style="margin-top:16px;">
     <div class="tip-title">📷 最佳观赏时间</div>
-    <div class="tip-text">
-      黄金时段：日出前6:30 - 上午11:30 | 下午4:00 - 6:30<br>
-      6-10月草短容易发现动物，我们去的6月正好！
-    </div>
+    <div class="tip-text">黄金时段：日出前6:30 - 上午11:30 | 下午4:00 - 6:30<br>6-10月草短容易发现动物，我们去的6月正好！</div>
   </div>
 </div>
 
 <!-- ===== 签证+疫苗+保险 ===== -->
-<div class="content-card">
+<div class="content-card reveal">
   <div class="card-number">08</div>
   <div class="section-header">
     <span class="section-icon">📝</span>
     <div>
       <div class="section-title">签证·疫苗·保险</div>
-      <div class="section-subtitle">VISA & VACCINATION & INSURANCE</div>
+      <div class="section-subtitle">VISA &amp; VACCINATION &amp; INSURANCE</div>
     </div>
   </div>
   <div class="visa-step">
@@ -740,7 +877,7 @@ body {
   <div class="visa-step">
     <div class="visa-step-num">2</div>
     <div>
-      <div class="visa-step-title">⚠️ 签证常见问题 & 解决方法</div>
+      <div class="visa-step-title">⚠️ 签证常见问题 &amp; 解决方法</div>
       <div class="visa-step-desc">
         <b>Q1：ETA网站打不开/加载很慢？</b><br>
         &nbsp;&nbsp;✅ 用VPN切换到非洲/欧洲节点；或换Chrome浏览器、清除缓存重试<br>
@@ -820,7 +957,7 @@ body {
 </div>
 
 <!-- ===== 行李清单 ===== -->
-<div class="content-card">
+<div class="content-card reveal">
   <div class="card-number">09</div>
   <div class="section-header">
     <span class="section-icon">🧳</span>
@@ -829,170 +966,93 @@ body {
       <div class="section-subtitle">PACKING LIST</div>
     </div>
   </div>
-
   <div class="tip-card warning" style="margin-bottom:20px;">
     <div class="tip-title">🚨 禁止事项</div>
-    <div class="tip-text">
-      ❌ 不能带塑料袋（包含包装袋），Kenya有"限塑令"，抓到罚款！<br>
-      ❌ 不能携带无人机
-    </div>
+    <div class="tip-text">❌ 不能带塑料袋（包含包装袋），Kenya有"限塑令"，抓到罚款！<br>❌ 不能携带无人机</div>
   </div>
-
   <div class="checklist-category">
     <div class="checklist-title">📄 必备证件</div>
     <div class="checklist-items">
-      <span class="checklist-item">护照(6个月+有效期)</span>
-      <span class="checklist-item">ETA签证打印件</span>
-      <span class="checklist-item">黄皮书(疫苗证明)</span>
-      <span class="checklist-item">机票行程单</span>
-      <span class="checklist-item">酒店预订单</span>
-      <span class="checklist-item">VISA信用卡</span>
-      <span class="checklist-item">美元+先令现金</span>
-      <span class="checklist-item">笔(填入境卡)</span>
+      <span class="checklist-item">护照(6个月+有效期)</span><span class="checklist-item">ETA签证打印件</span><span class="checklist-item">黄皮书(疫苗证明)</span><span class="checklist-item">机票行程单</span><span class="checklist-item">酒店预订单</span><span class="checklist-item">VISA信用卡</span><span class="checklist-item">美元+先令现金</span><span class="checklist-item">笔(填入境卡)</span>
     </div>
   </div>
-
   <div class="checklist-category">
     <div class="checklist-title">👕 衣物穿搭</div>
     <div class="checklist-items">
-      <span class="checklist-item">冲锋衣(温差大必带)</span>
-      <span class="checklist-item">运动透气衣5-6套</span>
-      <span class="checklist-item">牛仔风(拍照好看)</span>
-      <span class="checklist-item">防晒衣</span>
-      <span class="checklist-item">徒步鞋</span>
-      <span class="checklist-item">拖鞋</span>
-      <span class="checklist-item">棒球帽/渔夫帽</span>
-      <span class="checklist-item">墨镜</span>
-      <span class="checklist-item">防尘面罩</span>
-      <span class="checklist-item">颈枕</span>
+      <span class="checklist-item">冲锋衣(温差大必带)</span><span class="checklist-item">运动透气衣5-6套</span><span class="checklist-item">牛仔风(拍照好看)</span><span class="checklist-item">防晒衣</span><span class="checklist-item">徒步鞋</span><span class="checklist-item">拖鞋</span><span class="checklist-item">棒球帽/渔夫帽</span><span class="checklist-item">墨镜</span><span class="checklist-item">防尘面罩</span><span class="checklist-item">颈枕</span>
     </div>
   </div>
-
   <div class="checklist-category">
     <div class="checklist-title">📱 电子设备</div>
     <div class="checklist-items">
-      <span class="checklist-item">英标插头转换器</span>
-      <span class="checklist-item">充电宝</span>
-      <span class="checklist-item">相机+长焦镜头(400mm以上)</span>
-      <span class="checklist-item">相机备用电池(多带几块!)</span>
-      <span class="checklist-item">手机挂绳</span>
-      <span class="checklist-item">肯尼亚电话卡(淘宝买)</span>
+      <span class="checklist-item">英标插头转换器</span><span class="checklist-item">充电宝</span><span class="checklist-item">相机+长焦镜头(400mm以上)</span><span class="checklist-item">相机备用电池(多带几块!)</span><span class="checklist-item">手机挂绳</span><span class="checklist-item">肯尼亚电话卡(淘宝买)</span>
     </div>
   </div>
-  <div class="tip-card" style="margin: 12px 0; background: #fff8f0; border-radius: 10px; padding: 14px 16px; border-left: 3px solid #ff9500;">
-    <div style="font-weight: bold; color: #e67e00; margin-bottom: 6px;">📷 相机携带提醒</div>
-    <div style="font-size: 13px; color: #5a4a3a; line-height: 1.8;">
+  <div class="tip-card" style="margin: 12px 0; border-left-color: var(--amber);">
+    <div class="tip-title">📷 相机携带提醒</div>
+    <div class="tip-text">
       🔹 <b>镜头：长焦必带，400mm以上！</b>Safari拍动物距离远，200mm根本不够用，400-600mm才能拍到清晰特写<br>
       🔹 <b>电池：多带几块备用电池！</b>全天游猎拍摄量巨大，一天轻松2000+张，一块电池撑不到下午<br>
       🔹 建议带一个广角（风景+星空）+ 一个长焦（动物），双机身更高效<br>
       🔹 防尘很重要！草原灰尘大，备好镜头盖、气吹和擦镜布
     </div>
   </div>
-
   <div class="checklist-category">
     <div class="checklist-title">💊 药品</div>
     <div class="checklist-items">
-      <span class="checklist-item">抗疟疾药(青蒿素)</span>
-      <span class="checklist-item">止泻药(蒙脱石散)</span>
-      <span class="checklist-item">感冒药</span>
-      <span class="checklist-item">退烧药(布洛芬)</span>
-      <span class="checklist-item">驱蚊剂(DEET)</span>
-      <span class="checklist-item">创可贴+碘伏</span>
-      <span class="checklist-item">抗过敏药</span>
-      <span class="checklist-item">晕车药</span>
+      <span class="checklist-item">抗疟疾药(青蒿素)</span><span class="checklist-item">止泻药(蒙脱石散)</span><span class="checklist-item">感冒药</span><span class="checklist-item">退烧药(布洛芬)</span><span class="checklist-item">驱蚊剂(DEET)</span><span class="checklist-item">创可贴+碘伏</span><span class="checklist-item">抗过敏药</span><span class="checklist-item">晕车药</span>
     </div>
   </div>
-
   <div class="checklist-category">
     <div class="checklist-title">🧴 日用品</div>
     <div class="checklist-items">
-      <span class="checklist-item">防晒霜SPF50+</span>
-      <span class="checklist-item">晒后修复</span>
-      <span class="checklist-item">洗漱全套(酒店可能不提供)</span>
-      <span class="checklist-item">湿纸巾</span>
-      <span class="checklist-item">卫生纸</span>
+      <span class="checklist-item">防晒霜SPF50+</span><span class="checklist-item">晒后修复</span><span class="checklist-item">洗漱全套(酒店可能不提供)</span><span class="checklist-item">湿纸巾</span><span class="checklist-item">卫生纸</span>
     </div>
   </div>
-
   <div class="checklist-category">
     <div class="checklist-title">🍜 食物</div>
     <div class="checklist-items">
-      <span class="checklist-item">老干妈</span>
-      <span class="checklist-item">榨菜</span>
-      <span class="checklist-item">泡面</span>
-      <span class="checklist-item">零食</span>
+      <span class="checklist-item">老干妈</span><span class="checklist-item">榨菜</span><span class="checklist-item">泡面</span><span class="checklist-item">零食</span>
     </div>
   </div>
 </div>
 
 <!-- ===== 安全+Tips ===== -->
-<div class="content-card">
+<div class="content-card reveal">
   <div class="card-number">10</div>
   <div class="section-header">
     <span class="section-icon">⚠️</span>
     <div>
-      <div class="section-title">安全须知 & Tips</div>
-      <div class="section-subtitle">SAFETY & TIPS</div>
+      <div class="section-title">安全须知 &amp; Tips</div>
+      <div class="section-subtitle">SAFETY &amp; TIPS</div>
     </div>
   </div>
-
   <div class="emergency-box">
     <div class="emergency-title">🆘 紧急联系方式</div>
     <div class="emergency-number">外交部领事保护热线：+86-10-12308</div>
     <div class="emergency-desc">24小时 | 中国驻肯尼亚大使馆领保专线：+254-20-2711222</div>
   </div>
-
   <div class="tip-card warning">
     <div class="tip-title">🦁 Safari安全守则</div>
-    <div class="tip-text">
-      ① 全程听向导Peter的指挥，绝对不要下车<br>
-      ② 不要靠近河马！它们非常暴躁<br>
-      ③ 不要站在斑马/角马身后，可能被踢<br>
-      ④ 不要离火烈鸟太近，它们怕人会飞走<br>
-      ⑤ 不要离水牛太近
-    </div>
+    <div class="tip-text">① 全程听向导Peter的指挥，绝对不要下车<br>② 不要靠近河马！它们非常暴躁<br>③ 不要站在斑马/角马身后，可能被踢<br>④ 不要离火烈鸟太近，它们怕人会飞走<br>⑤ 不要离水牛太近</div>
   </div>
-
   <div class="tip-card green">
     <div class="tip-title">💡 实用小贴士</div>
-    <div class="tip-text">
-      ① 船上穿冲锋衣，有水花且冷<br>
-      ② 每天衣服会灰蒙蒙的，一天至少1套换洗<br>
-      ③ 温差很大！早晚冷中午热<br>
-      ④ 酒店房间和Safari车上有免费水<br>
-      ⑤ 安博塞利酒店的纪念品值得买
-    </div>
+    <div class="tip-text">① 船上穿冲锋衣，有水花且冷<br>② 每天衣服会灰蒙蒙的，一天至少1套换洗<br>③ 温差很大！早晚冷中午热<br>④ 酒店房间和Safari车上有免费水<br>⑤ 安博塞利酒店的纪念品值得买</div>
   </div>
-
   <div class="tip-card">
     <div class="tip-title">🎁 纪念品购买点</div>
-    <div class="tip-text">
-      ① 安博塞利酒店内<br>
-      ② 前往安博塞利途中的路边店<br>
-      ③ 内罗毕机场<br>
-      ④ 前往机场途中<br>
-      ⚠️ 尽量避免接触当地小摊（卫生考虑）
-    </div>
+    <div class="tip-text">① 安博塞利酒店内<br>② 前往安博塞利途中的路边店<br>③ 内罗毕机场<br>④ 前往机场途中<br>⚠️ 尽量避免接触当地小摊（卫生考虑）</div>
   </div>
-
   <div class="tip-card">
     <div class="tip-title">📷 拍摄Tips</div>
-    <div class="tip-text">
-      ① 黄金拍摄时段：6:30-11:30 / 16:00-18:30<br>
-      ② 安博塞利经典机位：大象+乞力马扎罗山<br>
-      ③ 带望远镜！鸟类超过450种<br>
-      ④ 带长焦镜头，动物不会配合你走近
-    </div>
+    <div class="tip-text">① 黄金拍摄时段：6:30-11:30 / 16:00-18:30<br>② 安博塞利经典机位：大象+乞力马扎罗山<br>③ 带望远镜！鸟类超过450种<br>④ 带长焦镜头，动物不会配合你走近</div>
   </div>
 </div>
 
 <!-- ===== 尾页 ===== -->
-<div class="footer-card">
-  <div class="footer-text">
-    🌍<br>
-    去肯尼亚<br>
-    做一场非洲梦
-  </div>
+<div class="footer-card reveal">
+  <div class="footer-text">🌍<br>去肯尼亚<br>做一场非洲梦</div>
   <div class="footer-sub">收藏 ⭐ 这篇攻略，出发前一定用得上！</div>
   <div class="footer-tags">
     <span class="footer-tag">#肯尼亚Safari</span>
@@ -1006,5 +1066,28 @@ body {
 </div>
 
 </div>
+
+<script>
+// Scroll reveal animation
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach((entry, index) => {
+    if (entry.isIntersecting) {
+      setTimeout(() => { entry.target.classList.add('visible'); }, index * 100);
+    }
+  });
+}, { threshold: 0.05, rootMargin: '0px 0px -50px 0px' });
+document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+// Parallax effect on cover
+const cover = document.querySelector('.cover-card');
+if (cover) {
+  window.addEventListener('scroll', () => {
+    const scrolled = window.pageYOffset;
+    if (scrolled < 1200) {
+      cover.style.backgroundPositionY = (scrolled * 0.3) + 'px';
+    }
+  }, { passive: true });
+}
+</script>
 </body>
 </html>
